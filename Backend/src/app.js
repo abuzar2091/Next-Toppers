@@ -11,4 +11,12 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" })); // for url  enco
 app.use(express.static("public"));  // to serve static files css js
 app.use(cookieParser());
 
+// routes
+import userRouter from "./routes/user.route.js"
+
+app.get("/",(req,res)=>{
+    res.send("hello world welcome")
+})
+app.use("/api/v1/users",userRouter)
+
 export {app}
