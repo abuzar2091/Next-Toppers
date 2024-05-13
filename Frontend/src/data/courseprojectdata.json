@@ -1,0 +1,35 @@
+{
+    "Projects": [
+      {  
+        "name":"Create Your Personal Brand Identity",
+        "descripton": "Design a logo, business card, and stationery set to establish your personal brand identity.",
+        "icon":"/course/tablet.png"
+      },
+      {  "name":"Magazine Spread Redesign",
+          "descripton": "Redesign a magazine spread layout, applying principles of typography and visual hierarchy.",
+          "icon":"/course/setting.png"
+      },
+      {
+        "name":"Poster Design Challenge",
+        "descripton" : "Design a visually striking poster for a social cause or event, focusing on effective communication and visual impact.",
+        "icon":"/course/graphic.png"
+      },
+      {
+        "name":"Website Redesign Project",
+        "descripton" : "Redesign a website layout for improved user experience and visual appeal, incorporating UI/UX design principles."
+        ,
+        "icon":"/course/idea.png"
+      },
+      {
+        "name":"Client Logo Design",
+        "descripton" : "Work on a simulated client project to design a logo and brand identity system based on client requirements and feedback.",
+        "icon":"/course/graphic-design.png"
+      },
+      {
+        "name":"Client Logo Design",
+        "descripton" : "Work on a simulated client project to design a logo and brand identity system based on client requirements and feedback.",
+        "icon":"/course/graphic-design.png"
+      }
+    ]
+  }
+  

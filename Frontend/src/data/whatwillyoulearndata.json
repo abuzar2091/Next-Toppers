@@ -1,0 +1,64 @@
+{
+    "projects":
+   
+        [
+            {
+                "Introduction to Graphic Design": {
+                    "label": "Understanding the principles and elements of graphic design, including color theory, typography, layout, and composition.",
+                    "value": "Introduction to Graphic Design"
+                }
+            },{
+                "Adobe Photoshop Basics": {
+                    "label": "Mastering essential tools and techniques in Adobe Photoshop for image editing, manipulation, and graphic creation.",
+                    "value": "Adobe Photoshop Basics"
+                }
+            }
+            ,{
+
+            
+                "Adobe Illustrator Essentials": {
+                    "label": "Learning the fundamentals of Adobe Illustrator for vector graphics creation, logo design, and illustration.",
+                    "value": "Adobe Illustrator Essentials"
+                }
+            },
+            {
+                "Typography Mastery": {
+                    "label": "Exploring typography principles, font selection, and typographic hierarchy for effective design communication.",
+                    "value": "Typography Mastery"
+                }
+            },
+            {
+                "Layout Design": {
+                    "label": "Developing skills in layout design for print and digital media, including magazine spreads, posters, and web layouts.",
+                    "value": "Layout Design"
+                }
+            },
+            {
+                "Logo Design": {
+                    "label": "Understanding the process of logo design, from conceptualization to execution, and creating impactful logos for brands.",
+                    "value": "Logo Design"
+                }
+            },
+            {
+                "Branding and Identity Design": {
+                    "label": "Exploring brand identity systems, including logo usage, color palettes, and brand guidelines.",
+                    "value": "Branding and Identity Design"
+                }
+            },
+
+              {  "UI/UX Design Principles": {
+                    "label": "Introduction to user interface (UI) and user experience (UX) design principles for web and app design.",
+                    "value": "UI/UX Design Principles"
+                }},
+
+               { "Portfolio Development": {
+                    "label": "Building a professional design portfolio showcasing your skills and projects to potential clients or employers.",
+                    "value": "Portfolio Development"
+                }}
+            
+            
+        ]
+
+
+  }
+  

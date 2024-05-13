@@ -1,0 +1,69 @@
+{
+    "projects":
+   
+        [   
+            
+          { "Can I enroll in this course without any prior design experience?": {
+            "label": "Yes, You Can enroll in this course without any prior design experience. we will start from scratch.",
+            "value": "Can I enroll in this course without any prior design experience?"
+        }},
+            { "Are there any specific software requirements for the course, and do I need to have access to Adobe Creative Cloud?": {
+                "label": "No, we will tell you time to time no need to have access to Adobe Creative Cloud.",
+                "value": "Can I enroll in this course without any prior design experience?"
+            }},
+            {
+                "How will I ask my doubts?": {
+                    "label": "There will be a dedicated team of TAs in your Unnayan community that will resolve your individual doubts.",
+                    "value": "How will I ask my doubts?"
+                }
+            },{
+                "What is the batch duration?": {
+                    "label": "Batch duration is almost 4 months ",
+                    "value": "What is the batch duration?"
+                }
+            }
+            ,{
+
+            
+                "Is the batch in Bangali or English?": {
+                    "label": "The batch is taught in Both (a mix of Bangali & English), very similar to the launch video of the batch.",
+                    "value": "Is the batch in Bangali or English?"
+                }
+            },
+            {
+                "How long is the batch access?": {
+                    "label": "The batch is accessible for the duration of 2 years. For consistency a deadline is important and i.e. why we don't believe in lifetime access as it may lead to procrastination and prolonged unemployment.",
+                    "value": "How long is the batch access?"
+                }
+            },
+            {
+                "Will there be a Certificate of completion?": {
+                    "label": "Yes, you will get certificates of completion after finishing all the lectures.",
+                    "value": "Will there be a Certificate of completion?"
+                }
+            },
+            {
+                "Is there a batch schedule?": {
+                    "label": "Yes, the schedule will be for alternate day lectures. Additional details about the live mentorship sessions & lectures are shared with students on orientation day (Day 1) of the batch.",
+                    "value": "Is there a batch schedule?"
+                }
+            },
+            {
+                "Is there a group/community I can join after enrolling?": {
+                    "label": "Yes, an exclusive Unnayan 3.0 community will be there for all enrolled students.",
+                    "value": "Is there a group/community I can join after enrolling?"
+                }
+            },
+
+              {  "Where will I find my batch after enrollment?": {
+                    "label": "You will find your batch in the Your Profile section on the website. Please note, the lectures will be visible after the batch starts on 20th June, 2024.",
+                    "value": "Where will I find my batch after enrollment?"
+                }}
+
+            
+            
+        ]
+
+
+  }
+  
