@@ -1,6 +1,6 @@
 import { useUserContext, INITIAL_USER } from "@/context/AuthContext";
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queryAndMutation";
 
@@ -8,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { SignUpForm } from "@/auth/forms/Index";
 import SignInForm from "@/auth/forms/SignInForm";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 function Header() {
   const { pathname } = useLocation();
 
@@ -22,7 +23,7 @@ function Header() {
 
   const [authStatus, setAuthStatus] = useState(isAuthenticated);
   console.log(isAuthenticated);
-  const { mutate: signOutAccount } = useSignOutAccount();
+  //const { mutate: signOutAccount } = useSignOutAccount();
 
   // useEffect(() => {
   //   const fetchUser = async () => {
@@ -37,11 +38,16 @@ function Header() {
 
   const handleSignOut = async (e) => {
     e.preventDefault();
-    signOutAccount();
-    setIsAuthenticated(false);
-    setUser(INITIAL_USER);
-    setAuthStatus(false);
-    navigate("/");
+     setIsAuthenticated(false);
+     setUser(INITIAL_USER);
+    // setAuthStatus(false);
+    // navigate("/");
+    await axios.post("/api/v1/users/logout"
+  ).then((res)=>{
+    console.log(res);
+  }).catch((err)=>{
+    console.log("error ",err);
+  });
   };
 
   let navItems = [
@@ -62,11 +68,13 @@ function Header() {
             : ""
         }`}
       >
+        <Link to={"/"} >
         <img
           loading="lazy"
-          src="/assets/images/freelanceItlogo.png"
+          src="/assets/images/freelanceitlogo.png"
           className="h-[50px]"
         />
+        </Link>
 
         <ul className=" flex ml-auto opacity-0 md:opacity-100  ">
           {navItems.map((item) =>

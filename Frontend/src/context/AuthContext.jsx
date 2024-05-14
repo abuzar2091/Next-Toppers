@@ -1,10 +1,11 @@
-import { getCurrentUSer } from "@/lib/appwrite/api";
 import { useContext, useEffect, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const INITIAL_USER = {
-  id: "",
-  name: "",
+  _id: "",
+  fullName: "",
+  phoneNumber:"",
   email: "",
 };
 const INITIAL_STATE = {
@@ -16,7 +17,6 @@ const INITIAL_STATE = {
   checkAuthUser: async () => false,
 };
 const AuthContext = createContext(INITIAL_STATE);
-
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(INITIAL_USER);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,18 +26,25 @@ const AuthProvider = ({ children }) => {
   const checkAuthUser = async () => {
     setIsLoading(true);
     try {
+      const currentAccount= await axios.get("/api/v1/users/get-current-user");  
+    //   .then((res)=>{
+    //   console.log(res);
+    // })
+    // .catch((err)=>{
+    //   console.log("error ",err);
+    // });
         console.log("inside getcurr context");
-      const currentAccount = await getCurrentUSer();
-      console.log(currentAccount);
+        // const currentAccount = await getCurrentUSer();
+        console.log(currentAccount.data.data);
       if (currentAccount) {
         setUser({
-          id: currentAccount.$id,
-          name: currentAccount.name,
-          
-          email: currentAccount.email,
-         
-        });
+          id: currentAccount.data.data._id,
+          fullName: currentAccount.data.data.fullName,
+          phoneNumber:currentAccount.data.data.phoneNumber,
+          email: currentAccount.data.data.email,
+           });
         setIsAuthenticated(true);
+        
         return true;
       }
       return false;
@@ -51,6 +58,7 @@ const AuthProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+  console.log("user ",user);
   useEffect(() => {
     if (
       localStorage.getItem("cookieFallback") === "[]" ||

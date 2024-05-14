@@ -1,3 +1,4 @@
+import WhatWillYouLearn from "@/page/WhatWillYouLearn.jsx";
 import { SelectBox } from "@/shared/SelectBox";
 import React from "react";
 
@@ -36,11 +37,6 @@ function FooterSmall() {
     <>
       <div className="flex flex-col items-center justify-center   pb-[60px] gap-[35px]">
         {/* <div className="flex flex-col items-center justify-center w-[97%]  gap-[15px]"> */}
-        <img
-          src="/assets/icons/logoicon.svg"
-          alt="logo_three"
-          className="h-[40px] ml-15"
-        />
 
         <SelectBox
           shape="round"
@@ -82,31 +78,8 @@ function FooterSmall() {
           options={dropDownOptions4}
           className="w-[100%]  font-medium bg-white "
         />
-        <div className="flex justify-between mt-6 w-[90%]">
-          <div className="flex flex-row justify-between mr-7 items-center gap-4">
-            <img
-              src="/assets/icons/img_facebook_logo_1.svg"
-              alt="facebooklogoone"
-              className="h-[22px] w-[22px]"
-            />
-
-            <img
-              src="/assets/icons/img_instagram_icon.svg"
-              className="bg-orange-500 w-[36px] rounded-[50%] h-[36px] px-[9px]"
-            />
-            <img
-              src="/assets/icons/img_twitter_logo.svg"
-              alt="twitterlogo_one"
-              className="h-[17px]"
-            />
-            <img
-              src="/assets/icons/img_linkedin_icon.svg"
-              alt="linkedinicon"
-              className="h-[18px]"
-            />
-          </div>
-          <p className="!text-base !font-normal">©2024 FreelanceIT</p>
-        </div>
+       
+       
       </div>
     </>
   );

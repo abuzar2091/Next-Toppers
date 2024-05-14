@@ -12,7 +12,7 @@ const variants = {
 };
 const sizes = {
   sm: "h-[48px] pl-[15px] pr-[30px] text-base",
-  xs: "h-[48px] pl-[15px] pr-[30px] text-base",
+  xs: "h-[60px] pl-[15px] pr-[30px] text-base",
 };
 
 const SelectBox = React.forwardRef(
@@ -25,7 +25,7 @@ const SelectBox = React.forwardRef(
       isMulti = false,
       indicator,
       shape = "",
-      size = "sm",
+      size = "xs",
       variant = "fill",
       color = "white_A700",
       ...restProps

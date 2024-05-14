@@ -10,30 +10,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
 import { useForm } from "react-hook-form";
 import { SignInValidation } from "@/lib/validation";
 // import Loader from "@/components/shared/Loader";
 import { Link, useNavigate } from "react-router-dom";
-// import { createUserAccount } from "@/lib/appwrite/api";
 import { useToast } from "@/components/ui/use-toast";
-import { useSignInAccount } from "@/lib/react-query/queryAndMutation";
 import { useUserContext } from "@/context/AuthContext";
-import { account } from "@/lib/appwrite/config";
-import { saveUserToDB } from "@/lib/appwrite/api";
 import Loader from "@/components/Loader";
-
+import axios from "axios";
 function SignInForm() {
   // const isLoading = false;
   const [check, setCheck] = useState(false);
   const [eye, setEye] = useState(true);
   const navigate = useNavigate();
+  const [submitform, setSubmitForm] = useState(false);
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   const { toast } = useToast();
 
-  // const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
-  //   useCreateUserAccount();
-  const { mutateAsync: signInAccount, isPending } = useSignInAccount();
   const form = useForm({
     resolver: zodResolver(SignInValidation),
     defaultValues: {
@@ -43,111 +36,42 @@ function SignInForm() {
   });
 
   async function onSubmit(values) {
-    //console.log(values);
-    if (check === false) {
-      console.log("Read and accept terms and condition, Please Try again");
-      return toast({
-        title: "Read and accept terms and condition, Please Try again",
-      });
-    }
+    try {
+      setSubmitForm(true);
 
-    const session = await signInAccount(values);
-    console.log(session);
-    // console.log(newUser);
-    if (!session) {
-      toast({
-        title: "Sign In failed, Please Try again",
-      });
-    }
-    const isLoggedIn = await checkAuthUser();
-    if (isLoggedIn) {
-      console.log(isLoggedIn);
+      if (!check) {
+        toast({
+          title: "Read and check the terms and conditons, Please Try again",
+        });
+        console.log("Read and check the terms and conditons");
+        setSubmitForm(false);
+        return;
+      }
+      await axios
+        .post("/api/v1/users/login", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("error ", err);
+        });
+      checkAuthUser();
       form.reset();
+      setSubmitForm(false);
       navigate("/");
-    } else {
-      return toast({
-        title: "Sign In failed, Please Try again",
-      });
+    } catch (error) {
+      setSubmitForm(false);
+      console.log("Something happening wrong in logging the user ", error);
     }
   }
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(false);
-
-  async function handleGoogleLogin(e) {
-    setIsLoading(true);
-
-    e.preventDefault();
-    try {
-      console.log("sign in with google");
-      // const redirectURL = 'https://cloud.appwrite.io/v1/account/sessions/oauth2/callback/google/65e068bd561fe10d2152'; // Replace with your redirect URL
-      const provider = "google";
-
-      const success = "http://localhost:5173/"; // Redirect URL on successful login
-      // const failure = "http://localhost:5173/sign-in";
-      account.createOAuth2Session(provider, success);
-      console.log("outside of auth1");
-      // const session=await account.getOAuth2Session('google');
-      // console.log(session);
-      //  if(session){
-      //const users = await account.get();
-      setUser(true);
-      //   console.log(users);
-      //   console.log("outside of auth2");
-
-      //   // Check if user information is available
-      //   if (users) {
-      //     // Save user information to the Appwrite database
-      //     await saveUserToDB({
-      //       accountId: users.$id,
-      //       email: users.email,
-      //       name: users.name,
-      //     });
-
-      //     console.log("User information saved to Appwrite database.");
-      //     window.location.href = success;
-      //   }
-      //}
-    } catch (error) {
-      console.error("Error initiating Google login:", error);
-      window.location.href = "http://localhost:5173/sign-in";
-    } finally {
-      setIsLoading(false);
-    }
-  }
-  //console.log("inside sign-in");
-  useEffect(() => {
-    console.log(" enter to save the data in dbms");
-    console.log(user);
-    const fetchUser = async () => {
-      try {
-        const users = await account.get();
-        console.log(" enter to save the data2 in dbms");
-        if (users) {
-          // Save user information to the Appwrite database
-          const newUser = await saveUserToDB({
-            accountId: users.$id,
-            email: users.email,
-            name: users.name,
-          });
-
-          console.log("User information saved to Appwrite database:", newUser);
-        }
-      } catch (error) {
-        console.error("Error fetching or saving user information:", error);
-      }
-    };
-
-    if (user) {
-      fetchUser();
-    }
-  }, [user]);
 
   return (
     <div className="w-full bg-gray-100 -z-200 relative  h-screen ">
       <div
         className="
     flex shadow-custom rounded-3xl bg-white  
-    justify-around  
+    justify-around  items-center
     
     absolute top-[45%] left-1/2  transform translate-x-[-50%]
     translate-y-[-50%] z-200
@@ -191,31 +115,8 @@ function SignInForm() {
         </div>
 
         <div className="px-16 md:py-4 py-8  w-[400px]">
-          <div className=" text-lg border-2 border-gray-200 md:mt-16 mt-4 rounded-md h-12 ">
-            <div
-              className="flex justify-center items-center gap-4   cursor-pointer"
-              onClick={handleGoogleLogin}
-            >
-              <img
-                src="/assets/icons/google.svg"
-                className="bg-red-400 rounded-md h-10 mt-[2px]"
-              />
-              {isLoading ? (
-                <div className="flex gap-3">
-                  <Loader />
-                  <p>Loading...</p>
-                </div>
-              ) : (
-                <button>Sign in with google</button>
-              )}
-            </div>
-          </div>
           <Form {...form}>
             <div className="sm:w-420 flex-col">
-              <h2 className="h3-bold  md:h2-bold lg:pt-2 sm:pt-0 text-center">
-                --- or sign in with your email ---
-              </h2>
-
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col gap-2 w-full mt-1"
@@ -284,7 +185,7 @@ function SignInForm() {
                   )}
                 />
                 <Button type="submit" className="bg-red-400">
-                  {isPending ? (
+                  {submitform ? (
                     <div className="flex flex-center gap-2">
                       <Loader />
                       <p> Loading... </p>

@@ -10,85 +10,70 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
 import { useForm } from "react-hook-form";
 import { SignUpValidation } from "@/lib/validation";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 import { Popover, PopoverContent } from "@/components/ui/popover";
-import {
-  useCreateUserAccount,
-  useSignInAccount,
-} from "@/lib/react-query/queryAndMutation";
+
 import { useUserContext } from "@/context/AuthContext";
 import Loader from "@/components/Loader";
+import axios from "axios";
 
 function SignUpForm() {
-  // const isLoading = false;
+  const isLoading = false;
   const [eye, setEye] = useState(true);
   const [check, setCheck] = useState(false);
+  const [submitform, setSubmitForm] = useState(false);
 
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   const { toast } = useToast();
 
-  const { mutateAsync: createUserAccount, isPending: isCreatingAccount } =
-    useCreateUserAccount();
-  const { mutateAsync: signInAccount, isPending: isSigningIn } =
-    useSignInAccount();
-  //const isCreatingAccount = false;
   const form = useForm({
     resolver: zodResolver(SignUpValidation),
     defaultValues: {
-      name: "",
+      fullName: "",
       email: "",
       password: "",
+      phoneNumber: "",
     },
   });
-  const isLoading = false;
 
   async function onSubmit(values) {
-    // console.log(values);
-    if (!check) {
-      toast({
-        title: "Read and check the terms and conditons, Please Try again",
-      });
-      console.log("Read and check the terms and conditons");
-      return;
-    }
-    const newUser = await createUserAccount(values);
-    if (!newUser) {
-      toast({
-        title: "Sign Up failed, Please Try again",
-      });
-    }
-    console.log(newUser);
-    // navigate("/");
+    try {
+      setSubmitForm(true);
 
-    const session = await signInAccount(values);
-    if (!session) {
-      toast({
-        title: "Sign In session not created failed, Please Try again",
-      });
-    }
-
-    console.log(session);
-    const isLoggedIn = await checkAuthUser();
-    console.log(isLoggedIn);
-    if (isLoggedIn) {
+      if (!check) {
+        toast({
+          title: "Read and check the terms and conditons, Please Try again",
+        });
+        console.log("Read and check the terms and conditons");
+        setSubmitForm(false);
+        return;
+      }
+      await axios
+        .post("/api/v1/users/signup", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("error ", err);
+        });
+      checkAuthUser();
       form.reset();
+      setSubmitForm(false);
       navigate("/");
-    } else {
-      return toast({
-        title: "Sign In2 failed, Please Try again",
-      });
+    } catch (error) {
+      setSubmitForm(false);
+      console.log("Something happening wrong in registering the user ", error);
     }
   }
 
   return (
     <div className="w-full bg-gray-100 -z-200 relative  h-screen ">
       <div
-        className="flex shadow-custom rounded-3xl bg-white   justify-around  absolute top-[45%] left-1/2  transform translate-x-[-50%] translate-y-[-50%] z-100 border-4  border-gray-400
+        className="flex  shadow-custom rounded-3xl bg-white   justify-around  absolute top-[45%] left-1/2  transform translate-x-[-50%] translate-y-[-50%] z-100 border-4  border-gray-400
       md:flex-row flex-col
       "
       >
@@ -124,36 +109,16 @@ function SignUpForm() {
           <div className="border-gray-300 border-[1px]   h-[50px]" />
         </div>
 
-        <div className="px-16 md:py-4 py-8 w-[400px]">
-          <div className=" text-lg border-2 border-gray-200 md:mt-8 rounded-md h-12 ">
-            <div className="flex justify-center items-center gap-4   cursor-pointer">
-              <img
-                src="/assets/icons/google.svg"
-                className="bg-red-400 rounded-md h-10 mt-[2px]"
-              />
-              {isLoading ? (
-                <div className="flex gap-3">
-                  <Loader />
-                  <p>Loading...</p>
-                </div>
-              ) : (
-                <button>Sign in with google</button>
-              )}
-            </div>
-          </div>
+        <div className="px-16  md:py-4 py-8  w-[400px]">
           <Form {...form}>
-            <div className="sm:w-420 flex-col">
-              <h2 className="h3-bold  md:h2-bold lg:pt-2 sm:pt-0 text-center">
-                --- or sign in with your email ---
-              </h2>
-
+            <div className="sm:w-420 flex-col ">
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col gap-2 w-full mt-1"
               >
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="fullName"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Full name</FormLabel>
@@ -168,7 +133,7 @@ function SignUpForm() {
                           <img
                             src="/assets/icons/account.svg"
                             alt="Account icon"
-                            className="absolute top-2 left-2 w-4 h-4 pointer-events-none"
+                            className="absolute top-3 left-2 w-4 h-4 pointer-events-none"
                           />
                         </div>
                       </FormControl>
@@ -195,7 +160,7 @@ function SignUpForm() {
                           <img
                             src="/assets/icons/msg.svg"
                             alt="Account icon"
-                            className="absolute top-2 left-2 w-4 h-4 pointer-events-none"
+                            className="absolute top-3 left-2 w-4 h-4 pointer-events-none"
                           />
                         </div>
                       </FormControl>
@@ -204,6 +169,34 @@ function SignUpForm() {
                     </FormItem>
                   )}
                 />
+
+                <FormField
+                  control={form.control}
+                  name="phoneNumber"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <div className="relative">
+                          <Input
+                            type="text"
+                            placeholder="+88xxxxxxxxxx"
+                            {...field}
+                            className="border rounded p-2 pl-8"
+                          />
+                          <img
+                            src="/assets/icons/phone.svg"
+                            alt="Account icon"
+                            className="absolute top-3 left-2 w-4 h-4 pointer-events-none"
+                          />
+                        </div>
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <FormField
                   control={form.control}
                   name="password"
@@ -242,7 +235,7 @@ function SignUpForm() {
                   )}
                 />
                 <Button type="submit" className="bg-red-400">
-                  {isCreatingAccount ? (
+                  {submitform ? (
                     <div className="flex-center gap-2">
                       <Loader />
                       <p>Loading...</p>
@@ -261,7 +254,6 @@ function SignUpForm() {
                   }
                   onClick={(e) => setCheck((prev) => !prev)}
                 />
-
                 <p className="text-sm">I agree to the terms and conditions</p>
               </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
+import RazorpayForm from "@/shared/RazorPayFrom";
 
 function GetCertificate() {
   return (
@@ -36,7 +37,7 @@ function GetCertificate() {
         be Internship/Placement ready for Tech companies.
       </p>
         </div>
-      <Link to="/">
+      <Link to="/pages.razorpay.com/unnayan-june">
         <div className="flex gap-1 mt-8 ml-4 items-center bg-orange-500 text-white  rounded-lg
          px-4 py-1 hover:bg-orange-400 w-[190px]">
         <button className="!font-semibold text-[25px]  
