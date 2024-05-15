@@ -13,10 +13,13 @@ app.use(cookieParser());
 
 // routes
 import userRouter from "./routes/user.route.js"
-
+import facultyRouter from "./routes/faculty.route.js"
+import adminRouter from "./routes/admin.route.js"
 app.get("/",(req,res)=>{
     res.send("hello world welcome")
 })
 app.use("/api/v1/users",userRouter)
+app.use("/api/v1/faculty",facultyRouter)
+app.use("/api/v1/admin",adminRouter)
 
 export {app}

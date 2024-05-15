@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
      phoneNumber: {
       type: String,
       required: true,
-    },
+      },
     email: {
       type: String,
       required: true,
@@ -25,6 +25,12 @@ const userSchema = new mongoose.Schema(
         type:Boolean,
         default:false
     },
+    myCourses:[
+      {
+          type:Schema.Types.ObjectId,
+          ref:"Course"
+      }
+  ], 
     password: { type: String,trim: true, required: [true, "Password is required"] },
     refreshToken: {
       type: String,

@@ -2,7 +2,7 @@ import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import wrapAsyncHandler from "../utils/wrapAsyncHandler.js";
-
+import axios from "axios"
 
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -34,17 +34,6 @@ const registerUser = wrapAsyncHandler(async (req, res, next) => {
     //   //check for the user creation
     //   //return respone
    // console.log(req.body);
-    console.log("lets start");
-    // return res
-    // .status(201)
-    // .json(
-    //   new ApiResponse(
-    //     200,
-    //     "user signup detail",
-    //     "User Registered Successfully"
-    //   )
-    // );
-
     const { phoneNumber, email, password, fullName } = req.body;
     console.log(req.body);
     if (
@@ -64,22 +53,31 @@ const registerUser = wrapAsyncHandler(async (req, res, next) => {
       email,
       password,
     });
-    const createdUser = await User.findById(user._id).select(
-      "-password  -refreshToken"
-    );
-    if (!createdUser) {
-      throw new ApiError(500, "Something went wrong while registering the user");
-    }
-
-    return res
-      .status(201)
-      .json(
-        new ApiResponse(
-          200,
-          { createdUser },
-          "User Registered Successfully"
-        )
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
+        user._id
       );
+
+      const createdUser = await User.findById(user._id).select(
+        "-password  -refreshToken"
+      );
+    
+      const options = {
+        httpOnly: true,
+        secure: true,
+      };
+      return res
+        .status(201)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(
+          new ApiResponse(
+            200,
+            { createdUser },
+            "User Registered Successfully"
+          )
+        );
+
+    
   });
 
 const loginUser = wrapAsyncHandler(async (req, res) => {
@@ -89,8 +87,8 @@ const loginUser = wrapAsyncHandler(async (req, res) => {
     if (!email) {
       throw new ApiError(400, "Email is required");
     }
-    const user = await User.findOne({
-      $or: [{ email }],
+    const user = await User.findOne({email 
+      //$or: [{ email }],
     });
     if (!user) {
       throw new ApiError(404, "User does not exits do signup first");
@@ -122,7 +120,54 @@ const loginUser = wrapAsyncHandler(async (req, res) => {
          }, "User Logged In Successfully")
       );
   });
-  
+const getCurrentUser = wrapAsyncHandler((req, res) => {
+    return res
+      .status(200)
+      .json(new ApiResponse(200,req.user, "current User fetched Successfully"));
+  }); 
+
+
+const enrollCourse= wrapAsyncHandler(async (req, res) => {
+  const {courseId}=req.body;
+  console.log("welcome to enrolling in the courses");
+  const userId = req.user?._id;
+  // Check if courseId already exists in user's myCourses array
+  const user = await User.findOneAndUpdate(
+    { _id: userId, myCourses: { $ne: courseId } }, // Ensure courseId is not already in myCourses array
+    { $push: { myCourses: courseId } }, // Add courseId to myCourses array
+    { new: true }
+  );
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {user}, "You Enrolled in Course Successfully!"));
+}); 
+
+const getMyProfile=wrapAsyncHandler(async (req, res) => {
+  console.log("welcome to getting data");
+  const userId = req.user?._id;
+  // Check if courseId already exists in user's myCourses array
+  const user = await User.aggregate([
+    {
+      $match: {
+           _id: userId,
+      },
+    },
+    {
+      $lookup: {
+        from: "courses",
+        localField: "myCourses",
+        foreignField: "_id",
+        as: "myCourses",
+      },
+    },
+  ])
+  return res
+    .status(200)
+    .json(new ApiResponse(200, {user}, "User info fetched Successfully!"));
+}); 
+
+
+
 const logoutUser = wrapAsyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(
       req.user._id,
@@ -145,4 +190,26 @@ const logoutUser = wrapAsyncHandler(async (req, res) => {
       .clearCookie("refreshToken", options)
       .json(new ApiResponse(200, {}, "User Logged Out Successfully!"));
   });  
-export {registerUser,loginUser,logoutUser}  
+
+const subscribeEmail=wrapAsyncHandler(async (req, res) => {
+  const {studentEmail}=req.body;
+  console.log("in backed ",req.body);
+  await axios
+  .post(
+    process.env.GOOGLE_SHEET_WEB_APP_URL,
+    {
+     studentEmail 
+    }
+  )
+  .then((res) => {
+    console.log("result ", res.data);
+  })
+  .catch(() => {
+    console.log("some error occur");
+  });
+  return res
+  .status(200)
+  .json(new ApiResponse(200, "Form Submitted Successfully", "Email Send!"));
+   
+});
+export {registerUser,loginUser,logoutUser,enrollCourse,getCurrentUser,getMyProfile,subscribeEmail}  
