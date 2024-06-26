@@ -12,6 +12,11 @@ const courseSchema = new mongoose.Schema(
         type: String,
       required: true,
     },
+    courseCategory:{
+      type: String,
+      required:true,
+
+    },
     lectures: [{
       type: Schema.Types.ObjectId,
       ref:"Video"

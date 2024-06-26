@@ -18,3 +18,6 @@ export const EnrollCourseValidation=z.object({
   email: z.string().min(5,{message:"To Short"}),
   price:z.number().min(99)
 });
+export const formValidationSchema = z.object({
+  studentEmail: z.string().email({ message: 'Invalid email address' }),
+});

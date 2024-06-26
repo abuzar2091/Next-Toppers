@@ -28,16 +28,17 @@ const registerFaculty= wrapAsyncHandler(async (req, res) => {
     }
 )
 const addCourse = wrapAsyncHandler(async (req, res) => {
-    const { courseName, courseDescription,coursePrice,courseRating, duration} = req.body;
-    if(!courseName && courseDescription){
+    const { courseName, courseDescription,courseCategory,coursePrice,courseRating, duration} = req.body;
+    if(!courseName && !courseDescription && !courseCategory){
          throw new ApiError(404,"To add Course provide Course Name");
     }
     const course=await Course.create({
         courseName,
          courseDescription,
+         courseCategory,
          coursePrice,
          courseRating,
-         duration
+         duration,
       })
       return res
       .status(201)

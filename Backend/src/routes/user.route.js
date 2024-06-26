@@ -8,6 +8,6 @@ router.route("/get-current-user").get(verifyJWT,getCurrentUser)
 router.route("/login").post(loginUser);
 router.route("/logout").post(verifyJWT,logoutUser);
 router.route("/enroll-course").post(verifyJWT,enrollCourse);
-router.route("/my-profile").get(verifyJWT,getMyProfile)
+router.route("/my-profile").get(verifyJWT,getMyProfile);
  
 export default router;

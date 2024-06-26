@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { UsersRound, Link as Connection } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import NewBatch from "./NewBatch";
+import JoinUs from "@/page/JoinUs";
+import Testimonial from "@/page/Testimonial";
 
 function HomePage() {
   const [currentText, setCurrentText] = useState("");
@@ -116,6 +118,8 @@ function HomePage() {
         
       </div>
       <NewBatch/>
+      <Testimonial/>
+      <JoinUs className="w-100%"/>
      
 
       <Footer />

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-slide > div {
+  margin:0 20px;
+}
+
 .bgwhiteg {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));

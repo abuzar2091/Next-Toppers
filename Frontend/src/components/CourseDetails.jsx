@@ -1,9 +1,8 @@
 import FreelanceCoursesDetailsCard from "@/shared/FreelanceCoursesDetailsCard";
 import { RatingBar } from "@/shared/RatingBar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
-import FooterSmall from "./FooterSmall";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import WhatWillYouLearn from "@/page/WhatWillYouLearn";
 import GetCertificate from "@/page/Certificate";
 import { ChevronRight } from "lucide-react";
@@ -11,9 +10,30 @@ import CourseProject1 from "@/page/CourseProject";
 import CourseProject2 from "@/page/CoursePage";
 import FrequentlyAskedQ from "@/page/FreequentlyAskedQ";
 import RazorpayForm from "@/shared/RazorPayFrom";
+import axios from "axios";
 
 
 function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name="Graphic Design"}) {
+  const navigate = useNavigate();
+  const {courseId}=useParams();
+  const [userdata,setUserData]=useState(null);
+  const [loggedIn,setLoggedIn]=useState(false);
+  useEffect(()=>{
+    const checkIsLoggedIn=async()=>{
+      await axios.get("/api/v1/users/get-current-user").then((res)=>{
+        setUserData(res.data.data)
+        console.log("get current user ",res.data.data);
+        setLoggedIn(true);
+          // navigate("/pages.razorpay.com/unnayan-june");
+      }).catch((err)=>{
+        console.log("err get-current-user ",err);
+        setLoggedIn(false);
+        //navigate("/sign-in");
+      })
+    }
+    checkIsLoggedIn();
+  },[])
+
   return (
     <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100 ">
       <div className="flex md:flex-row flex-col md:justify-between items-center md:items-start w-[92%] mx-auto  md:gap-10 px-5  my-8  bg-gray-200 max-w-7xl rounded-[20px]">
@@ -47,33 +67,61 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
             Course Playlists
           </h1>
           <div className="flex flex-col w-full gap-4">
-            <div className="flex flex-row justify-start items-center w-full gap-2.5 p-2.5 bg-white cursor-pointer rounded-[10px] hover:shadow-sm">
-              <img
-                src="/assets/images/img_image.png"
-                alt="image"
-                className="w-[23%]  object-cover rounded-[5px]"
-              />
+            <div className="flex flex-row justify-start items-center w-full gap-2.5 p-2.5 opacity-0.5 bg-white cursor-pointer rounded-[10px] hover:shadow-sm">
+              <div className="flex flex-row justify-start w-[23%]">
+                <div className="h-[50px] w-full sm:w-full relative">
+                  <img
+                    src="/assets/images/img_image_50x80.png"
+                    alt="image_one"
+                    className="justify-center h-[50px] w-full sm:w-full left-0 bottom-0 right-0 top-0 opacity-0.5 object-cover absolute rounded-[5px]"
+                  />
+                  <div className="flex flex-col items-center justify-center h-max w-max left-0 bottom-0 right-0 top-0 p-1 m-auto bg-white absolute rounded-[50%]">
+                    <img
+                      src="/assets/icons/img_lock_pad_lock_s.svg"
+                      alt="lockpadlocks"
+                      className="h-[10px] w-[10px] "
+                    />
+                  </div>
+                </div>
+              </div>
               <div className="flex flex-col items-start justify-start w-[70%] gap-[3px]">
-                <h3 className="!text-black font-semibold flex">
-                  Introduction to Graphic Design
-                </h3>
-                <p className="text-deep_orange-400 text-sm font-medium">1:57</p>
+                <h1 className="!text-black-900_87 opacity-0.5">
+                Introduction to Graphic Design
+                </h1>
+                <p className="!text-deep_orange-400_87 opacity-0.5 text-sm font-medium">
+                  1:57
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex flex-row justify-start items-center w-full gap-2.5 p-2.5 opacity-0.5 bg-white cursor-pointer rounded-[10px] hover:shadow-sm">
+              <div className="flex flex-row justify-start w-[23%]">
+                <div className="h-[50px] w-full sm:w-full relative">
+                  <img
+                    src="/assets/images/img_image_50x80.png"
+                    alt="image_one"
+                    className="justify-center h-[50px] w-full sm:w-full left-0 bottom-0 right-0 top-0 opacity-0.5 object-cover absolute rounded-[5px]"
+                  />
+                  <div className="flex flex-col items-center justify-center h-max w-max left-0 bottom-0 right-0 top-0 p-1 m-auto bg-white absolute rounded-[50%]">
+                    <img
+                      src="/assets/icons/img_lock_pad_lock_s.svg"
+                      alt="lockpadlocks"
+                      className="h-[10px] w-[10px] "
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-start justify-start w-[64%] gap-[3px]">
+                <h1 className="!text-black-900_87 opacity-0.5">
+                Adobe Photoshop Basics
+                </h1>
+                <p className="!text-deep_orange-400_87 opacity-0.5 text-sm font-medium">
+                  5:43
+                </p>
               </div>
             </div>
 
-            <div className="flex flex-row justify-start items-center w-full gap-2.5 p-2.5 bg-white shadow-sm cursor-pointer rounded-[10px] hover:shadow-sm">
-              <img
-                src="/assets/images/img_image.png"
-                alt="image_one"
-                className="w-[23%]  object-cover rounded-[5px]"
-              />
-              <div className="flex flex-col items-start justify-start w-[64%] gap-[3px]">
-                <h1 as="h4" className="!text-black font-semibold ">
-                Adobe Photoshop Basics
-                </h1>
-                <p className="text-deep_orange-400 text-sm font-medium">5:43</p>
-              </div>
-            </div>
+  
 
             <div className="flex flex-row justify-start items-center w-full gap-2.5 p-2.5 bg-white cursor-pointer rounded-[10px] hover:shadow-sm">
               <div className="flex flex-row justify-start w-[23%]">
@@ -237,54 +285,6 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
               </p>
             </div>
 
-            {/* <div className="flex flex-col items-start justify-start w-full pt-0.5">
-              <h1 className="text-3xl font-semibold">
-                What you&#39;ll learn in this course:
-              </h1>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[10px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[10px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[10px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-
-              <div className="flex   justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[3px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[3px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[3px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-              <div className="flex  justify-start items-center w-full mt-1.5 gap-2.5 py-[3px] sm:gap-2.5">
-                <div className="h-[10px] w-[10px] bg-deep_orange-400 rounded-[50%]" />
-                <p className="mt-[3px] sm:mt-0 !text-gray-900 text-base font-normal">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </p>
-              </div>
-            </div> */}
           </div>
 
           <div className="flex flex-col items-center justify-start w-[43%]  gap-[23px]">
@@ -355,27 +355,38 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
                 <h1 className="text-right text-xl font-semibold">Lifetime</h1>
               </div>
             </div>
-            
-            <Link to="/pages.razorpay.com/unnayan-june"  className="w-full">
+{/*             
+            <Link to="/pages.razorpay.com/unnayan-june"  className="w-full"> */}
         <div  className="flex gap-1 mt-4 justify-center items-center bg-orange-600  text-white w-full  font-medium rounded-[5px] h-[54px] px-[35px] text-lg
          py-1 hover:bg-orange-400">
-        <button className="!font-semibold text-[25px]  
-        ">Enroll Now</button>
-           <ChevronRight className="mt-1" />
+        {userdata?.myCourses?.filter((id)=>id===courseId)?(
+        <button className="!font-semibold text-[25px] disabled">
+          Already Enrolled
+          </button>):( 
+            loggedIn?(
+              <Link to="/pages.razorpay.com/unnayan-june">
+         <button className="!font-semibold text-[25px] 
+          "> Enroll Now</button> 
+          </Link>
+            ):(
+              <Link to="/sign-in">
+              <button className="!font-semibold text-[25px]  
+               "> Enroll Now</button> 
+               </Link>
+            )
+          )
+          }
+       <ChevronRight className="mt-1" />
         </div>
-        </Link>
+        {/* </Link> */}
           </div>
         </div>
       </div>
       <WhatWillYouLearn/>
       <CourseProject1/>
       <CourseProject2/>
-      <GetCertificate/>
+      <GetCertificate courseId={courseId}/>
       <FrequentlyAskedQ/>
-
-     
-      
-
       <div className="flex flex-col items-start justify-start w-[92%] mx-auto gap-12 md:px-5 max-w-7xl">
         <h1
           size="2xl"
@@ -406,5 +417,4 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
     </div>
   );
 }
-
 export default CourseDetails;

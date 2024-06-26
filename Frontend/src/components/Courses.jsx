@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Input } from "./ui/input";
 import FreelanceCoursesDetailsCard from "@/shared/FreelanceCoursesDetailsCard";
 import Footer from "./Footer";
+import { Link, useLocation } from "react-router-dom";
 const dropDownOptions = [
   { label: "Option1", value: "option1" },
   { label: "Option2", value: "option2" },
@@ -12,8 +13,15 @@ const dropDownOptions = [
 
 function Courses() {
   const [searchBarValue, setSearchBarValue] = useState("");
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const categoryName = params.get('category');
+  const [showCourse,setShowCourse]=useState(false);
+  const showMoreCourse=()=>{
+        setShowCourse(true);
+  }
   return (
-    <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100 ">
+    <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100">
       <div className="flex flex-col items-start justify-start  mx-12 my-8 gap-[5px] p-5 md:px-5 bg-yellow-100 max-w-7xl rounded-[20px]">
         <h2 className="sub-route !font-medium">Home | Courses</h2>
 
@@ -278,33 +286,54 @@ function Courses() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-start w-full gap-[47px]">
-        <div className="flex flex-row flex-wrap justify-center w-full gap-5  max-w-7xl">
-          <button className=" bg-white text-gray-900  py-2  font-medium min-w-[120px] rounded-[10px]">
+      <div className="flex flex-col items-center  w-full gap-[47px]">
+        <div className={`flex w-full gap-5 ${showCourse && `overflow-x-scroll `} px-10`}>
+         <Link to="/courses/category?category=All Courses">
+          <button className={`${categoryName==`All Courses` ?`bg-orange-300 text-white`:`bg-white`} text-gray-900  py-2 px-4 font-medium min-w-[150px] rounded-[10px]`}>
             All Courses
+          </button> 
+         </Link>
+         <Link to="/courses/category?category=Programming and Software Development">
+          <button className={` ${categoryName==`Programming and Software Development` ?`bg-orange-300 text-white`:`bg-white`} text-gray-900 py-2 px-4 font-medium min-w-[342px] rounded-[10px]`}>
+          Programming and Software Development
           </button>
-          <button className="bg-white text-gray-900 py-2 font-medium min-w-[142px] rounded-[10px]">
-            Kindergarten
+          </Link>
+          <Link to="/courses/category?category=School Curriculum">
+          <button className={`${!categoryName || categoryName==(`School Curriculum`) ?`bg-orange-300 text-white`:`bg-white`}  py-2 px-4 font-medium min-w-[170px] rounded-[10px]`}>
+          School Curriculum
           </button>
-          <button className="bg-orange-300 text-white py-2 font-medium min-w-[120px] rounded-[10px]">
-            High School
+          </Link>
+          <Link to="/courses/category?category=Engineering and Technical Courses">
+          <button className={`${categoryName==`Engineering and Technical Courses` ?`bg-orange-300 text-white`:`bg-white`}  text-gray-900  py-2  px-4 font-medium min-w-[300px] rounded-[10px]`}>
+          Engineering and Technical Courses
           </button>
-          <button className="bg-white text-gray-900  py-2 font-medium min-w-[120px] rounded-[10px]">
-            College
+          </Link>
+         {showCourse &&  (<>
+          <Link to="/courses/category?category=Creative Arts and Design">
+          <button className={`${categoryName==`Creative Arts and Design`?`bg-orange-300 text-white`:`bg-white`}  text-gray-900 py-2  px-4 font-medium min-w-[240px] rounded-[10px]`}>
+          Creative Arts and Design
           </button>
-          <button className="bg-white text-gray-900 py-2 font-medium min-w-[142px] rounded-[10px]">
-            Computer
+          </Link>
+          <Link to="/courses/category?category=Test Preparation">
+          <button className={`${categoryName==`Test Preparation`?`bg-orange-300 text-white`:`bg-white`} text-gray-900 py-2 px-4 font-medium min-w-[150px] rounded-[10px]`}>
+          Test Preparation
           </button>
-          <button className="bg-white text-gray-900 py-2  font-medium min-w-[120px] rounded-[10px]">
-            Science
+          </Link>
+          <Link to="/courses/category?category=Technology and Gadgets">
+          <button className={`${categoryName==`Technology and Gadgets`?`bg-orange-300 text-white`:`bg-white`} text-gray-900  py-2  px-4 font-medium min-w-[212px] rounded-[10px]`}>
+          Technology and Gadgets
           </button>
-          <button className="bg-white text-gray-900  py-2 font-medium min-w-[142px] rounded-[10px]">
-            Engineering
-          </button>
-          <button className="bg-white text-gray-900  py-2  text-deep_orange-400 font-medium min-w-[142px] rounded-[10px]">
+          </Link>
+          </>
+        )}
+          {!showCourse && <>
+            <button onClick={showMoreCourse} className="bg-white text-gray-900  py-2 px-4  text-deep_orange-400 font-medium min-w-[142px] rounded-[10px]">
             More Courses
-          </button>
+            </button>
+          </>
+          }
         </div>
+     {!categoryName && 
         <div className="flex flex-row justify-center mx-12 my-8">
           <div className="flex flex-col items-start justify-start w-full gap-[23px] md:px-5 max-w-7xl">
             <h1 className="text-3xl font-semibold">Standard Classes</h1>
@@ -395,10 +424,11 @@ function Courses() {
               </div>
             </div>
           </div>
-        </div>
+        </div>}
+
       </div>
 
-      <div className="flex flex-col justify-center items-center gap-8 w-full">
+      {/* <div className="flex flex-col justify-center items-center gap-8 w-full">
         <div className="flex flex-col items-center justify-start w-full gap-[50px] px-12 max-w-7xl">
           <div className="flex flex-col items-start justify-start w-full pt-0.5 gap-2.5">
             <h1 className="text-3xl font-semibold">
@@ -502,7 +532,7 @@ function Courses() {
         </div>
       </div>
 
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

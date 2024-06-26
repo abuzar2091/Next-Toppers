@@ -26,7 +26,7 @@ const removeCourse= wrapAsyncHandler(async (req, res) => {
 })
 const newCourse= wrapAsyncHandler(async (req, res) => {
     const newCourse=await Course.findOne({
-      courseName:"Graphic Design"
+      courseName:"Graphic Design 3.0"
     }) 
     return res
     .status(200)
@@ -38,6 +38,87 @@ const newCourse= wrapAsyncHandler(async (req, res) => {
       )
     ); 
 })
-export {removeCourse,
-    newCourse
+const getCourseBasedOnCategory= wrapAsyncHandler(async (req, res) => {
+  const {categoryName}=req.body;
+  console.log(req.body);
+  // const course=await Course.find();
+  if(categoryName==="All Courses")
+    {
+    const courses = await Course.aggregate([
+      {  
+        $group: {
+          _id: "$courseCategory", // Group by category
+          courses: { $push: "$$ROOT" } // Push all course details
+        }
+      },
+      {
+        $project: {
+          courseCategory: "$_id",
+          courses: 1,
+          _id: 0
+        }
+      }
+    ]);
+    return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        {courses},
+        "Course based on the searched category"
+      )
+    );
+
+  }
+
+   const courses = await Course.aggregate([
+    {
+      $match:{
+        courseCategory:categoryName,
+      }
+    },
+    {  
+      $group: {
+        _id: "$courseCategory", // Group by category
+        courses: { $push: "$$ROOT" } // Push all course details
+      }
+    },
+    {
+      $project: {
+        courseCategory: "$_id",
+        courses: 1,
+        _id: 0
+      }
+    }
+  ]);
+
+    return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        {courses},
+        "Course based on the searched category"
+      )
+    ); 
+
+  // }
+  // const courses=await Course.find({
+  //   courseCategory:categoryName,
+  // }) 
+  // return res
+  // .status(200)
+  // .json(
+  //   new ApiResponse(
+  //     200,
+  //     {courses},
+  //     "Course based on the searched category"
+  //   )
+  // ); 
+
+});
+export {
+    removeCourse,
+    newCourse,
+    getCourseBasedOnCategory
 }

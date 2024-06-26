@@ -40,6 +40,7 @@ function EnrollNowForm() {
   const [razorpayFormData, setRazorpayFormData] = useState(null);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const courseId="6643a37569f68e952940768c";
   async function onSubmit(values) {
     setFormSubmitted(true);
     console.log(values);
@@ -49,6 +50,21 @@ function EnrollNowForm() {
       phone: values.phoneNumber,
     });
    
+   try {
+     await axios.post("/api/v1/users/enroll-course",courseId)
+     .then((res)=>{
+         console.log("enrolled successfully ",res);
+         navigate("/my-profile")
+     })
+     .catch((err)=>{
+         console.log(err);
+        navigate("/sign-in");
+     })
+   } catch (error) {
+    console.log("Some error occured during enrolling in the course ",error);
+    
+   }
+   
   }
 
   return (
@@ -56,9 +72,7 @@ function EnrollNowForm() {
       <div
         className="
     flex shadow-custom rounded-sm bg-white  
-    justify-around  items-center
-    
-    absolute top-[45%] left-1/2  transform translate-x-[-50%]
+    justify-around  items-center absolute top-[45%] left-1/2  transform translate-x-[-50%]
     translate-y-[-50%] z-200
        border-1 border-gray-400
         flex-col 

@@ -102,7 +102,8 @@ function Header() {
               <button onClick={handleSignOut} className="px-2 py-[6px]">
                 Sign out
               </button>
-              <div className="flex justify-center items-start  gap-2">
+              <Link to="/my-profile">
+              <div className="flex justify-center items-start  gap-2 cursor-pointer">
                 <button>
                   <p className="small-medium lg:base-medium py-1">My Account</p>
                 </button>
@@ -112,6 +113,7 @@ function Header() {
                   className="h-[30px] w-[30px] mt-1"
                 />
               </div>
+              </Link>
             </div>
           )}
         </ul>

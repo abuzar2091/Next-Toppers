@@ -16,6 +16,10 @@ import AllMentors from "./components/AllMentors";
 import JoinAsMentor from "./components/JoinAsMentor";
 import HomePage from "./components/HomePage";
 import EnrollNowForm from "./shared/EnrollNowForm";
+import MyProfile from "./components/MyProfile";
+import MyBatch from "./components/MyBatch";
+import CourseLayout from "./components/CourseLayout";
+import CourseBasedOnCategory from "./page/CourseBasedOnCategory";
 //import { useUserContext } from "./context/AuthContext";
 
 function App() {
@@ -39,8 +43,12 @@ function App() {
           <Route path="/sign-up" element={<SignUpForm />} />
            <Route path="/sign-in" element={<SignInForm />} />
            <Route path="/shop" element={<Shop />} />
-           <Route path="/courses" element={<Courses />} />
-           <Route path="/course-details" element={<CourseDetails />} />
+           <Route path="/courses"  element={<CourseLayout/>}>
+             <Route path="category" element={<CourseBasedOnCategory/>}/>
+           </Route>
+           <Route path="/my-profile" element={<MyProfile/>}/>
+           <Route path="/learning/:courseId" element={<MyBatch/>} />
+           <Route path="/course-details/:courseId" element={<CourseDetails />} />
            <Route path="/pages.razorpay.com/unnayan-june" element={<EnrollNowForm/>} />
            <Route path="/faculty-wade-warren" element={<MentorDetails />} />
            <Route path="/mentors" element={<AllMentors />} />

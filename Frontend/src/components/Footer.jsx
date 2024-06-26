@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { SelectBox } from "@/shared/SelectBox";
 import FooterSmall from "./FooterSmall";
+import axios from "axios";
+import { formValidationSchema } from "@/lib/validation";
 
 function Footer() {
+  const [studentEmail, setStudentEmail] = useState("");
+  const [msg,setMsg]=useState("");
+  const [error,setError]=useState("");
+  const [submitform,setSubmitForm]=useState(false);
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+      try {
+      setSubmitForm(true);
+      console.log(studentEmail);
+      formValidationSchema.parse({studentEmail});
+      await axios.post("/api/v1/users/email"
+        ,{studentEmail})
+      .then((res)=>{
+        console.log("form successfully submitted ",res.data.data);
+         setMsg(res.data.data);
+        setTimeout(() => {
+          setMsg("");
+         }, 5000);
+      })
+      .catch((err)=>{
+        console.log("some error occcur ",err);
+      })
+      setSubmitForm(false);
+      setStudentEmail("");
+} catch (error) {
+ setSubmitForm(false);
+ console.log("error occured ",error);
+  setError(error.errors[0]?.message);
+  setTimeout(() => {
+    setError("");
+   }, 5000);
+
+  };
+}
   return (
     <footer className="flex flex-col gap-[100px] items-center justify-center w-full">
       <div className="flex flex-col md:flex-row justify-between w-[90%] items-center py-[10px] gap-4 lg:px-[50px] my-12  bg-black    max-w-7xl rounded-[20px]">
@@ -41,14 +77,20 @@ function Footer() {
             <Input
               shape="round"
               type="email"
-              name="email"
+              name="studentEmail"
+              value={studentEmail}
+              onChange={(e) =>
+                setStudentEmail(e.target.value )
+              }
+              required
               placeholder="enter your email"
-              className="w-[50%] text-white  font-medium rounded-tr-[0px] rounded-br-[0px] "
+              className="w-[50%] text-black  font-medium rounded-tr-[0px] rounded-br-[0px] "
             />
-            <button className="bg-red-400 h-[40px] text-white text-base rounded-tr-[10px] rounded-br-[10px] font-medium min-w-[130px]">
-              Subscribe
+            <button className="bg-red-400 h-[40px] text-white text-base rounded-tr-[10px] rounded-br-[10px] font-medium min-w-[130px]" onClick={handleSubmit}>
+              { !submitform?"Subscribe":"Subscribing..."}
             </button>
           </div>
+          <p className="!text-gray-500 text-center !text-base !font-normal leading-5">{msg} {error}</p>
         </div>
 
         <div className="flex md:flex-col items-end justify-center w-[100%] md:w-[16%]  md:gap-[57px]">
