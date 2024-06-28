@@ -213,6 +213,7 @@ function Courses() {
                       +
                     </p>
                   </div>
+                  
                   {/* 
                 <div className="flex flex-row justify-between w-full text-deep_orange-400">
                   <p className="!font-airbnbcerealapp text-center !text-[15px] font-semibold">
@@ -424,7 +425,8 @@ function Courses() {
               </div>
             </div>
           </div>
-        </div>}
+        </div>
+        }
 
       </div>
 

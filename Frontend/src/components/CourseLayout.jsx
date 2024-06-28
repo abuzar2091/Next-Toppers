@@ -115,8 +115,6 @@ function CourseLayout() {
       currentCount++;
     }
   }
-  
-
 const totalCards=debouncedSearchBarValue.length>0?filteredCourses.length:coursesByCategory.reduce((acc, categoryGroup) => acc + categoryGroup.courses.length, 0);
 const totalPages = Math.ceil(totalCards / cardsPerPage);
 
@@ -126,7 +124,8 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
         <Courses/>
         <section className="my-20">
         <Outlet/> 
-        </section>
+        </section>  
+
          <div className="flex flex-col justify-center items-center gap-8 w-full">
           <div className="flex flex-col items-center justify-start w-full gap-[50px] px-12 max-w-7xl">
           <div className="flex flex-col items-start justify-start w-full pt-0.5 gap-2.5">
@@ -166,9 +165,7 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
                 className="md:w-[30%]  sm:w-[35%] font-medium  bg-white "
               />
             </div>
-          </div>
-
-        
+          </div>        
           <div className="justify-center w-full gap-10 sm:grid-cols-2 grid-cols-1 md:gap-5 grid">
           {displayedCourses.length > 0 ? displayedCourses.map((course) => (
           <FreelanceCoursesDetailsCard
@@ -205,7 +202,7 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
             <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
           </button>
         </div>
-      </div>
+        </div>
 
       <Footer />
 

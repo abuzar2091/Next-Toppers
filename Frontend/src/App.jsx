@@ -20,6 +20,8 @@ import MyProfile from "./components/MyProfile";
 import MyBatch from "./components/MyBatch";
 import CourseLayout from "./components/CourseLayout";
 import CourseBasedOnCategory from "./page/CourseBasedOnCategory";
+import ShopLayout from "./components/ShopLayout";
+import BookBasedOnCategory from "./components/BookBasedOnCategory";
 //import { useUserContext } from "./context/AuthContext";
 
 function App() {
@@ -42,10 +44,14 @@ function App() {
           <Route path="/" element={<HomePage/>}/>
           <Route path="/sign-up" element={<SignUpForm />} />
            <Route path="/sign-in" element={<SignInForm />} />
-           <Route path="/shop" element={<Shop />} />
+           <Route path="/shop" element={<ShopLayout/>}>
+           <Route path="category" element={<BookBasedOnCategory/>} />
+           </Route>
+           {/* <Route path="/shop" element={<ShopLayout/>}/> */}
            <Route path="/courses"  element={<CourseLayout/>}>
              <Route path="category" element={<CourseBasedOnCategory/>}/>
            </Route>
+          
            <Route path="/my-profile" element={<MyProfile/>}/>
            <Route path="/learning/:courseId" element={<MyBatch/>} />
            <Route path="/course-details/:courseId" element={<CourseDetails />} />
