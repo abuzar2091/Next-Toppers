@@ -7,7 +7,7 @@ export const verifyJWT = wrapAsyncHandler(async (req,res, next) => {
   try {
      const token =req.cookies?.accessToken ||
       req.header("Authorization")?.replace("Bearer ", "");
-      console.log(token);
+      console.log("authentication process ",token);
     if(!token) {
        throw new ApiError(401, "Unauthorized request jsonweb token not found");
     }

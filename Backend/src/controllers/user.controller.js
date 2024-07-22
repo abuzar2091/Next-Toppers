@@ -76,8 +76,6 @@ const registerUser = wrapAsyncHandler(async (req, res, next) => {
             "User Registered Successfully"
           )
         );
-
-    
   });
 
 const loginUser = wrapAsyncHandler(async (req, res) => {
@@ -120,6 +118,8 @@ const loginUser = wrapAsyncHandler(async (req, res) => {
          }, "User Logged In Successfully")
       );
   });
+
+  
 const getCurrentUser = wrapAsyncHandler((req, res) => {
     return res
       .status(200)

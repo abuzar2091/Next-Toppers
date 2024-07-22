@@ -3,6 +3,7 @@ import { Shop } from "../models/shop.model.js";
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import wrapAsyncHandler from "../utils/wrapAsyncHandler.js";
 
 const removeCourse= wrapAsyncHandler(async (req, res) => {
@@ -143,9 +144,8 @@ const addBook = wrapAsyncHandler(async (req, res) => {
   }
 )
 
-
 const getBooksBasedOnCategory= wrapAsyncHandler(async (req, res) => {
-  const {categoryName}=req.query;
+  const {categoryName}=req.query; 
   console.log(categoryName);
   if(categoryName==="All Books")
     {
@@ -206,10 +206,51 @@ const getBooksBasedOnCategory= wrapAsyncHandler(async (req, res) => {
       )
     ); 
 });
+
+const getApplicationAsMentorRequest=wrapAsyncHandler(async (req, res) => {
+
+  const {fullName,email,phoneNumber,address,experience,linkedinURL,resume,subjects } = req.body;
+  
+  console.log(req.body);
+if(!fullName && !email && !phoneNumber && !address && !resume && !subjects){
+  throw new ApiError(404,"Enter valid data");
+}
+// const localVideoFilePath = req.file?.path;
+// console.log(localVideoFilePath);
+ //const resumeUrl=uploadOnCloudinary(resume);
+ //console.log(resumeUrl);
+ console.log("file :",req?.files?.path);
+   const resumeLocalPath = req.files?.resume[0]?.path;
+   console.log("resume local ",resumeLocalPath);
+
+
+  // if (req.files && req.files.coverImage && req.files.coverImage.length > 0) {
+  //   coverImageLocalPath = req.files?.coverImage[0]?.path || "";
+  // }
+  // if (!avatarLocalPath) {
+  //   throw new ApiError(400, "Avatar file is required");
+  // }
+ // const resum = await uploadOnCloudinary(resumeLocalPath);
+
+  // if (!resum) {
+  //   throw new ApiError(400, "Avatar is not uploaded");
+  // }
+  //const coverImage = "";
+  // const user = await User.create({
+  //   username: username.toLowerCase(),
+  //   fullName,
+  //   email,
+  //   avatar: avatar.url,
+  //   coverImage: coverImage?.url || "",
+  //   password,
+  // });
+
+});
 export {
     removeCourse,
     newCourse,
     getCourseBasedOnCategory,
     addBook,
-    getBooksBasedOnCategory
+    getBooksBasedOnCategory,
+    getApplicationAsMentorRequest
 }
