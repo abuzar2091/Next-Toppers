@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
       {
           type:Schema.Types.ObjectId,
           ref:"Course"
-      }
+      }   
   ], 
     password: { type: String,trim: true, required: [true, "Password is required"] },
     refreshToken: {

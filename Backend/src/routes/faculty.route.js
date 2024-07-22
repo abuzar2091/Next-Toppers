@@ -1,7 +1,11 @@
 import { Router } from "express";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { addCourse, registerFaculty } from "../controllers/faculty.controller.js";
+import { addCourse, addFacultyAboutInfo, getFacultyMentor, getFacultyMentors, registerFaculty, updateFacultyAttributes } from "../controllers/faculty.controller.js";
 const router=Router();
 router.route("/register").post(registerFaculty); 
 router.route("/addcourse").post(addCourse); 
+router.route("/get-faculty-mentors").get(getFacultyMentors);
+router.route("/get-faculty-mentor/:mentorId").get(getFacultyMentor);
+router.route("/update-faculty-attributes").post(updateFacultyAttributes);
+router.route("/add-about-info").post(addFacultyAboutInfo);
 export default router;

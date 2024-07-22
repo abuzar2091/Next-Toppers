@@ -3,15 +3,15 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 const facultySchema = new mongoose.Schema(
   {
-    faculyMentor:{
-        type:Schema.Types.ObjectId,
+    facultyMentor:{
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User"
      },
     avatar: {
       type: String,
      // required: true,
     },
-    experiance:{
+    experience:{
         type:String,
         default:"fresher"
     },
@@ -19,9 +19,13 @@ const facultySchema = new mongoose.Schema(
         type:[String],
         required:true,  
     },
+    about:{
+      type:String,
+      required:true
+    },
     courses:[
         {
-            type:Schema.Types.ObjectId,
+            type:mongoose.Schema.Types.ObjectId,
             ref:"Course"
         }
     ],   
