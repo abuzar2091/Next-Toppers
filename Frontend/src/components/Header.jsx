@@ -55,7 +55,7 @@ function Header() {
     { name: "Courses", redirection: "/courses", active: true },
     { name: "Shop", redirection: "/shop", active: true },
     { name: "Mentors", redirection: "/mentors", active: true },
-    { name: "Join As a Mentor", redirection: "/mentor", active: true },
+    { name: "Join As a Mentor", redirection: "/join as mentor", active: true },
     { name: "Sign-In", redirection: "/sign-in", active: !isAuthenticated },
     { name: "Sign-Up", redirection: "/sign-up", active: !isAuthenticated },
   ];
@@ -148,7 +148,7 @@ function Header() {
                   </NavLink>
                 </li>
               ) : null
-            )}
+        )}
             {isAuthenticated && (
               <div className="flex items-start gap-4">
                 <button onClick={handleSignOut} className="px-2 py-[6px]">

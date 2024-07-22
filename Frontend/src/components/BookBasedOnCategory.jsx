@@ -200,7 +200,7 @@ const filteredBook = dropDownFilter?.filter(book =>
             <p className="!text-gray-900 !font-medium text-base leading-5 ">
             of &nbsp; {totalPages}
             </p>
-            <button  onClick={handleViewMore} disabled={currentPage === totalPages} className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-red-300">
+            <button  onClick={handleViewMore} disabled={currentPage === totalPages} className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-red-300 hover:bg-red-400">
               <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
             </button>
           </div>

@@ -120,8 +120,6 @@ function HomePage() {
       <NewBatch/>
       <Testimonial/>
       <JoinUs className="w-100%"/>
-     
-
       <Footer />
     </div>
   );

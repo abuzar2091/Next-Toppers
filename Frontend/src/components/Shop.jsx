@@ -213,7 +213,7 @@ function Shop() {
           <button
             onClick={handleViewMore}
             disabled={currentPage === totalPages}
-            className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-red-300"
+            className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-red-300 hover:bg-red-400"
           >
             <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
           </button>

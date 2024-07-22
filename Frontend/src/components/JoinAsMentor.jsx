@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 function JoinAsMentor() {
   return (
@@ -22,11 +23,10 @@ function JoinAsMentor() {
           </h1>
           {/* <div> */}
           <img
-            src="/assets/images/mentor img.jpg"
+            src="/assets/images/mentor_img.jpg"
             alt="mentor-img"
             className="object cover rounded-[20px] sm:w-1/3 w-[50%] "
           />
-
           {/* </div> */}
         </div>
       </div>
@@ -93,9 +93,11 @@ function JoinAsMentor() {
                 </div>
               </div>
               <div className="flex justify-start">
+                <Link to={"/join as mentor/apply"}>
                 <button className="py-2 ml-0 font-medium min-w-[143px] bg-orange-500 text-white rounded-[10px] ">
                   Apply Now
                 </button>
+                </Link>
               </div>
             </div>
           </div>

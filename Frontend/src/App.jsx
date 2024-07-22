@@ -22,6 +22,7 @@ import CourseLayout from "./components/CourseLayout";
 import CourseBasedOnCategory from "./page/CourseBasedOnCategory";
 import ShopLayout from "./components/ShopLayout";
 import BookBasedOnCategory from "./components/BookBasedOnCategory";
+import ApplicationFormForMentor from "./page/ApplicationForMentor";
 //import { useUserContext } from "./context/AuthContext";
 
 function App() {
@@ -56,9 +57,10 @@ function App() {
            <Route path="/learning/:courseId" element={<MyBatch/>} />
            <Route path="/course-details/:courseId" element={<CourseDetails />} />
            <Route path="/pages.razorpay.com/unnayan-june" element={<EnrollNowForm/>} />
-           <Route path="/faculty-wade-warren" element={<MentorDetails />} />
+           <Route path="/mentors/:mentorId" element={<MentorDetails/>} />
            <Route path="/mentors" element={<AllMentors />} />
-           <Route path="/mentor" element={<JoinAsMentor />} />
+           <Route path="/join as mentor" element={<JoinAsMentor />} />
+           <Route path="/join as mentor/apply" element={<ApplicationFormForMentor/>}/>
          </Route>
       </Routes>
     </>
