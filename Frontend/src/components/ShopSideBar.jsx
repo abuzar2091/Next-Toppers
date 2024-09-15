@@ -9,7 +9,7 @@ function ShopSideBar() {
     const allBooks = "All Books";
     const fetchBooks = async (allBooks) => {
       const { data } = await axios.get(
-        `/api/v1/admin/getbooks-basedon-category?categoryName=${allBooks}`
+        `${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/getbooks-basedon-category?categoryName=${allBooks}`
       );
       return data.data.shops; // Return the data from the API response
     };

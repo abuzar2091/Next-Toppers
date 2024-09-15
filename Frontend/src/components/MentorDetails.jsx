@@ -9,7 +9,7 @@ function MentorDetails() {
   console.log("id ",mentorId);
   let mentor="single mentor";
   const fetchMentor = async () => {
-    const { data } = await axios.get(`/api/v1/faculty/get-faculty-mentor/${mentorId}`);
+    const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/faculty/get-faculty-mentor/${mentorId}`);
     return data.data.mentor[0]; // Return the data from the API response
   };
 const { data: facultyMentor, isLoading, error } = useQuery({

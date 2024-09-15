@@ -7,7 +7,7 @@ function MyProfile() {
       const [data,setData]=useState(null);
     useEffect(()=>{
         const getMyProfile=async()=>{
-            await axios.get("/api/v1/users/my-profile")
+            await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/my-profile`)
             .then((res)=>{
                 setData(res.data.data.user[0])
                 console.log("myprofile ",res.data.data.user[0]);

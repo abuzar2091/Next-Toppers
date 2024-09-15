@@ -76,7 +76,7 @@ function CourseBasedOnCategory() {
 
   const [rowsToShow, setRowsToShow] = useState(1);
   const fetchCourses = async (categoryName) => {
-    const { data } = await axios.post("/api/v1/admin/getcourse-basedon-category", { categoryName });
+    const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/getcourse-basedon-category`, { categoryName });
     return data.data.courses; // Return the data from the API response
   };
 // UseQuery hook to fetch data

@@ -20,7 +20,7 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
   const [loggedIn,setLoggedIn]=useState(false);
   useEffect(()=>{
     const checkIsLoggedIn=async()=>{
-      await axios.get("/api/v1/users/get-current-user").then((res)=>{
+      await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/get-current-user`).then((res)=>{
         setUserData(res.data.data)
         console.log("get current user ",res.data.data);
         setLoggedIn(true);
@@ -33,10 +33,10 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
     }
     checkIsLoggedIn();
   },[])
-  console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",courseId);
+ // console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",courseId);
   useEffect(() => {
     const id=(userdata?.myCourses?.filter(id => id.toString() === courseId.toString())) 
-      console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",id);
+     // console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",id);
     
   }, [userdata, courseId]);
   

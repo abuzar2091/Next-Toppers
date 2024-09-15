@@ -35,7 +35,7 @@ function Header() {
      setUser(INITIAL_USER);
     // setAuthStatus(false);
     // navigate("/");
-    await axios.post("/api/v1/users/logout"
+    await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/logout`
   ).then((res)=>{
     console.log(res);
   }).catch((err)=>{

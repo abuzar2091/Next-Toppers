@@ -53,7 +53,7 @@ function SignUpForm() {
         return;
       }
       await axios
-        .post("/api/v1/users/signup", values)
+        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/signup`, values)
         .then((res) => {
           console.log(res);
         })

@@ -99,7 +99,7 @@ function HomePage() {
       </div>
 
       <div ref={ref} className="!font-semibold sm:text-[25px] text-[15px] text-center">
-        <h2 >BANGLADESH'S MOST LOVED ONLINE LEARNING PLATFROM ❤️</h2>
+        <h2 >INDIA'S MOST LOVED ONLINE LEARNING PLATFROM ❤️</h2>
         <div className="flex justify-center sm:gap-[200px] mt-8">
 
           <div className="flex items-center flex-col px-6">
