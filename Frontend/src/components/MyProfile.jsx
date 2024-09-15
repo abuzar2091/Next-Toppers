@@ -21,9 +21,9 @@ function MyProfile() {
   return (
     <div className="flex flex-col  items-center w-full gap-[40px] bg-gray-100 ">
 
-        <h1 className="bg-white w-full text-center py-8 font-semibold text-[20px]">HI {data?.fullName}, WELCOME TO YOUR COURSES!</h1>
+        <h1 className="bg-white w-full text-center py-8 font-semibold sm:text-[20px]">HI {data?.fullName}, WELCOME TO YOUR COURSES!</h1>
            {
-            data?.myCourses.length && 
+             data?.myCourses?.length>0 && 
             <h2 className="!font-semibold text-[24px]">COURSES</h2>
            }
         <div className="flex justify-center gap-12 flex-wrap my-8 w-[80%]">

@@ -35,14 +35,15 @@ import "slick-carousel/slick/slick-theme.css";
 import React, { useRef } from 'react';
 
 const Testimonials = () => {
-    var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1   ,
-      };
-      const data=[
+    // var settings = {
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 500,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1   ,
+    //   };
+
+      var data=[
         {
             name:"Faruqi Afzal",
             img:"/course/tablet.png",
@@ -72,31 +73,67 @@ const Testimonials = () => {
         }
     ]
     
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3, // Default to 1 slide to show
+        slidesToScroll: 1,
+        responsive: [
+        {
+            breakpoint: 640, // Align with md
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 768, // Align with lg
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+             initialSlide: 2,
+            },
+          },
+          {
+            breakpoint: 1024, // Align with lg
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+            // initialSlide: 2,
+            },
+          },
+        ],
+      };
 
   return (
    
     // <div className="flex gap-4 m-12">
-    <div className="flex flex-col bg-gray-200">
+    <div className="flex flex-col bg-gray-200 py-2">
 
-    <h1 className="!font-semibold w-[100%] lg:text-[45px] text-[35px] text-center">Testimonials</h1>
-    <p className="!font-semibold text-[25px] text-center"> Across the nation, we're the institute of choice for thousands of students and parents</p>
-    <div className="m-16">
-   <Slider {...settings} >
-   {
-       
-       data.map((card)=>(
-           <div key={card.name} className="flex flex-col rounded-lg">
-            <img  src={card.img} className="h-16 rounded-full mx-auto" />
-            <p className="text-center !font-semibold mt-4">{card.coursePurchased}</p>
-            <p className="mt-2">{card.review}</p>
-            <p className="!font-semibold text-center mt-6">{card.name}</p>
-        </div>
-    ))
-   }
-    </Slider>
+    <h1 className="!font-semibold w-[100%] lg:text-[45px] md:text-[35px] text-[25px] text-center">Testimonials</h1>
+    <p className="!font-semibold md:text-[25px] text-[18px] text-center px-2"> Across the nation, we're the institute of choice for thousands of students and parents</p>
+    <div className="md:m-16 m-8">
+      <Slider {...settings}>
+        {data.map((card) => (
+          <div key={card.name} className="sm:p-1">
+            <div className="flex flex-col gap-4 rounded-lg">
+              <img
+                src={card.img}
+                className="h-16 rounded-full mx-auto"
+                alt={card.name}
+              />
+              <p className="text-center font-semibold mt-4">
+                {card.coursePurchased}
+              </p>
+              <p className="mt-2">{card.review}</p>
+              <p className="font-semibold text-center mt-6">{card.name}</p>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </div>
-    
-   </div>
+  </div>
 
 );
 };

@@ -33,37 +33,43 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
     }
     checkIsLoggedIn();
   },[])
+  console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",courseId);
+  useEffect(() => {
+    const id=(userdata?.myCourses?.filter(id => id.toString() === courseId.toString())) 
+      console.log("done mil gya courses enjoy krooooooooooooooooooooooooooooooooooooo",id);
+    
+  }, [userdata, courseId]);
+  
 
   return (
     <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100 ">
-      <div className="flex md:flex-row flex-col md:justify-between items-center md:items-start w-[92%] mx-auto  md:gap-10 px-5  my-8  bg-gray-200 max-w-7xl rounded-[20px]">
-        <div className="flex flex-col items-start justify-start w-[63%]  ml-[5px] gap-[29px]">
+      <div className="flex lg:flex-row flex-col md:justify-between items-center md:items-start md:w-[92%] w-[100%] mx-auto my-8 bg-gray-200 max-w-7xl rounded-[20px]">
+        <div className="flex flex-col items-start justify-start lg:w-[63%] w-[100%] px-4 ml-[5px] gap-[29px]">
           <p className="!text-black tracking-[0.48px] !font-medium">
-            Home | Courses | Course Details
+            Home | Courses | Course Details 
           </p>
 
-          <div className="flex flex-col items-start justify-start w-full gap-[29px]">
+          <div className="flex flex-col items-start justify-start w-full  gap-[0px]">
             <div className="flex flex-row justify-start w-full">
-              <div className="h-[455px] w-full relative">
+              <div className="sm:h-[455px] h-[200px] w-full m-4 relative">
                 <img
                   src="/assets/images/img_pexels_vanessa_garcia_6325959.png"
-                  //src="/assets/images/batchgraphic.png"
                   alt="pexelsvanessa"
-                  className="justify-center h-[455px] w-full  left-0 bottom-0 right-0 top-0 m-auto object-cover absolute rounded-[20px]"
+                  className="justify-center sm:h-[455px] sm:w-full  left-0 bottom-0 right-0 top-0 m-auto object-cover absolute rounded-[20px]"
                 />
                 <button className="w-[60px]  bg-red-300 left-0 bottom-0 right-0 top-0 m-auto absolute rounded-[50%] h-[60px] px-[22px]">
                   <img src="/assets/icons/img_call_button.svg" />
                 </button>
               </div>
             </div>
-            <h1 className="!text-black lg:text-[25px]  text-[18px] font-semibold">
+            <h1 className="!text-black lg:text-[25px]  md:text-[18px] mt-4 font-semibold">
               {Course_Title} | Episode 1
             </h1>
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-start lg:w-[32%] mr-[5px] gap-3">
-          <h1 className="!text-black text-[25px] font-semibold">
+        <div className="flex flex-col items-start justify-start lg:w-[35%] w-[100%] px-4 mr-[5px] gap-3">
+          <h1 className="!text-black sm:text-[25px] text-[20px] font-semibold">
             Course Playlists
           </h1>
           <div className="flex flex-col w-full gap-4">
@@ -236,9 +242,9 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
 
       <div className="flex flex-row justify-center  w-[92%] mx-auto">
         <div className="flex lg:flex-row flex-col justify-start md:items-start items-center w-full gap-10  md:px-5 max-w-7xl">
-          <div className="flex flex-col items-center justify-start w-[66%] md:w-full gap-6">
+          <div className="flex flex-col items-center justify-start md:w-full mx-2 gap-6">
             <div className="flex flex-col items-start justify-start w-full gap-2">
-              <h1 className="text-3xl font-semibold">Course Details</h1>
+              <h1 className="sm:text-3xl text-2xl font-semibold">Course Details</h1>
               <p className="leading-[30px] text-base font-normal 
               
               text-[19px]">
@@ -249,7 +255,7 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
             </div>
 
             <div className="flex flex-col items-start justify-start w-full gap-2">
-              <h1 className="text-3xl font-semibold">Who this course is for</h1>
+              <h1 className="sm:text-3xl text-2xl font-semibold">Who this course is for</h1>
               <p className="leading-[30px] text-base font-normal">
                 <ul className="flex flex-col gap-2">
                   <li className="!font-semibold text-[19px]">Beginners:
@@ -287,7 +293,7 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
 
           </div>
 
-          <div className="flex flex-col items-center justify-start w-[43%]  gap-[23px]">
+          <div className="flex flex-col items-center justify-start sm:w-[56%]  gap-[23px]">
             <div className="flex flex-col items-center justify-center w-full gap-[19px] p-[19px] bg-white rounded-[10px]">
               <div className="flex flex-row justify-between items-center w-full mt-[5px]">
                 <h1 className="!text-gray-600  text-xl font-semibold">Price</h1>
@@ -295,12 +301,12 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
                   BDT 2999.00
                 </h1>
               </div>
-              <div className="flex flex-row justify-between w-full">
+              <div className="flex flex-row gap-10 justify-between w-full">
                 <h1 className="mb-0.5 !text-gray-600 text-xl font-semibold">
                   Instructor
                 </h1>
-                <Link to="/faculty-wade-warren">
-                  <h1 className="text-right underline text-xl font-semibold">
+                <Link to="/mentors/667ed98a85511101d0c074b8">
+                  <h1 className="text-right underline sm:text-xl font-semibold">
                     Wade Warren
                   </h1>
                 </Link>
@@ -359,23 +365,21 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
             <Link to="/pages.razorpay.com/unnayan-june"  className="w-full"> */}
         <div  className="flex gap-1 mt-4 justify-center items-center bg-orange-600  text-white w-full  font-medium rounded-[5px] h-[54px] px-[35px] text-lg
          py-1 hover:bg-orange-400">
-        {userdata?.myCourses?.filter((id)=>id===courseId)?(
-        <button className="!font-semibold text-[25px] disabled">
-          Already Enrolled
-          </button>):( 
-            loggedIn?(
-              <Link to="/pages.razorpay.com/unnayan-june">
-         <button className="!font-semibold text-[25px] 
-          "> Enroll Now</button> 
-          </Link>
-            ):(
-              <Link to="/sign-in">
-              <button className="!font-semibold text-[25px]  
-               "> Enroll Now</button> 
-               </Link>
-            )
-          )
-          }
+          {userdata?.myCourses?.filter((id) => id === courseId).length > 0 ? (
+  <button className="!font-semibold sm:text-[25px] text-[20px]" disabled>
+    Already Enrolled
+  </button>
+) : (
+  loggedIn ? (
+    <Link to="/pages.razorpay.com/unnayan-june">
+      <button className="!font-semibold text-[25px]">Enroll Now</button>
+    </Link>
+  ) : (
+    <Link to="/sign-in">
+      <button className="!font-semibold text-[25px]">Enroll Now</button>
+    </Link>
+  )
+)}
        <ChevronRight className="mt-1" />
         </div>
         {/* </Link> */}
@@ -387,28 +391,32 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
       <CourseProject2/>
       <GetCertificate courseId={courseId}/>
       <FrequentlyAskedQ/>
-      <div className="flex flex-col items-start justify-start w-[92%] mx-auto gap-12 md:px-5 max-w-7xl">
+      <div className="flex flex-col items-start justify-start w-[92%] mx-auto sm:gap-12 gap-4 md:px-5 max-w-7xl">
         <h1
           size="2xl"
-          className="!font-metropolis text-[45px] font-bold leading-[55px]"
+          className="!font-metropolis md:text-[40px] sm:text-[35px] text-[25px] font-bold leading-[55px]"
         >
           Similar Courses
         </h1>
-        <div className="justify-center w-full gap-10 sm:grid-cols-2  grid-cols-1 md:gap-5 grid">
+        <div className="justify-center w-full gap-6 sm:grid-cols-2  grid-cols-1 md:gap-5 grid">
           <FreelanceCoursesDetailsCard
+          thethree = "Computer Network"
             imageOne="/assets/images/img_image_103x160.png"
             className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
           />
           <FreelanceCoursesDetailsCard
+          thethree = "Web Development and Design"
             imageOne="/assets/images/img_image_2.png"
             className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
           />
           <FreelanceCoursesDetailsCard
+          thethree = "Graphic Design"
             imageOne="/assets/images/img_image_3.png"
             className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
           />
           <FreelanceCoursesDetailsCard
             //   imageOne="/assets/images/img_image_4.png"
+            thethree = "Java Programming"
             className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
           />
         </div>

@@ -21,13 +21,9 @@ import axios from "axios";
 import RazorpayForm from "./RazorPayFrom";
 
 function EnrollNowForm() {
-
-
   const navigate = useNavigate();
-  
   // const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   //const { toast } = useToast();
-
   const form = useForm({
     resolver: zodResolver(EnrollCourseValidation),
     defaultValues: {
@@ -38,7 +34,6 @@ function EnrollNowForm() {
     },
   });
   const [razorpayFormData, setRazorpayFormData] = useState(null);
-
   const [formSubmitted, setFormSubmitted] = useState(false);
   const courseId="6643a37569f68e952940768c";
   async function onSubmit(values) {
@@ -68,18 +63,18 @@ function EnrollNowForm() {
   }
 
   return (
-    <div className="w-full bg-gray-100 -z-200 relative  h-screen ">
+    <div className="w-full bg-gray-100 -z-200 relative  min-h-screen ">
       <div
         className="
     flex shadow-custom rounded-sm bg-white  
-    justify-around  items-center absolute top-[45%] left-1/2  transform translate-x-[-50%]
+    justify-around  items-center absolute sm:top-[45%] top-[65%] left-1/2  transform translate-x-[-50%]
     translate-y-[-50%] z-200
        border-1 border-gray-400
         flex-col 
       "
       >
         <h1 className="!font-semibold text-[20px] p-4 mt-4">Payment Details</h1>
-        <div className="  w-[600px]">
+        <div className="  md:w-[600px]">
           <Form {...form}>
             <div className="  flex-col">
               <form
@@ -88,9 +83,9 @@ function EnrollNowForm() {
                 className="flex flex-col gap-16 w-full mt-1"
               >
                 <div className="px-16 flex flex-col gap-4">
-                  <div className="w-full flex justify-between">
+                  <div className="w-full flex  sm:flex-row flex-col sm:gap-8 gap-2 justify-between">
                     <p className="!font-semibold">Amount</p>
-                    <div className="w-[300px]">
+                    <div className="sm:w-[300px] w-[250px]">
                       <p className="border rounded p-2 !font-semibold">
                         <span className=" text-[16px] ">&#2547;</span> 2,999.00
                       </p>
@@ -105,10 +100,10 @@ function EnrollNowForm() {
                     name="email"
                     render={({ field }) => (
                       <FormItem className="flex flex-col justify-between">
-                        <div className="flex items-start  justify-between">
+                        <div className="flex  sm:flex-row flex-col items-start sm:gap-8 gap-2 justify-between">
                           <FormLabel className="mt-3">Email</FormLabel>
                           <FormControl>
-                            <div className="w-[300px]">
+                            <div className="sm:w-[300px] w-[250px]">
                               <Input
                                 type="email"
                                 // placeholder="user@example.com"
@@ -132,10 +127,10 @@ function EnrollNowForm() {
                     name="phoneNumber"
                     render={({ field }) => (
                       <FormItem className="flex flex-col  ">
-                        <div className="flex items-start  justify-between">
+                        <div className="flex sm:flex-row flex-col items-start sm:gap-0 gap-2 justify-between">
                           <FormLabel className="mt-3">Phone Number</FormLabel>
                           <FormControl>
-                            <div className="w-[300px]">
+                            <div className="sm:w-[300px] w-[250px]">
                               <Input
                                 type="text"
                                 // placeholder="+88xxxxxxxxxx"
@@ -154,10 +149,10 @@ function EnrollNowForm() {
                     name="fullName"
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
-                        <div className="flex items-start  justify-between">
+                        <div className="flex  sm:flex-row flex-col items-start  sm:gap-8 gap-2 justify-between">
                           <FormLabel className="mt-3">Full name</FormLabel>
                           <FormControl>
-                            <div className="w-[300px]">
+                            <div className="sm:w-[300px] w-[250px]">
                               <Input
                                 type="text"
                                 //   placeholder="Enter name"
@@ -177,7 +172,7 @@ function EnrollNowForm() {
                   />
                 </div>
                 <div className="flex w-full justify-between items-center bg-gray-100">
-                  <div className="flex gap-2 items-center ml-16">
+                  <div className="flex gap-2 items-center sm:ml-16">
                     <img src="/payment/upi.png" className="h-4 object-cover" />
                     <img src="/payment/visa.png" className="h-5 object-cover" />
                     <img
@@ -186,14 +181,14 @@ function EnrollNowForm() {
                     />
                   </div>
 
+                  {/* <p className="flex items-center gap-1">
+                 < RazorpayForm/>
+                    </p> */}
                   <Button
                     type="submit"
                     className="bg-blue-600 rounded-none px-8 py-7"
                   >
                     <div className="flex gap-2">
-                      {/* <p className="flex items-center gap-1">
-                     < RazorpayForm/>
-                        </p> */}
                       {!formSubmitted && !razorpayFormData && <>Pay</>}
                       {formSubmitted && razorpayFormData && (
                         <RazorpayForm

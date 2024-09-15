@@ -57,12 +57,12 @@ const CourseProject1 = () => {
     // <div className="flex flex-wrap justify-center" >
     <div
       ref={ref}
-      className="flex flex-col justify-center items-center mx-16 gap-24"
+      className="flex flex-col justify-center items-center sm:mx-16 mx-6 sm:gap-24 gap-8"
     >
-      <h1 className="text-3xl font-semibold">
+      <h1 className="text-3xl  font-semibold">
         Build Industry Grade <span className="text-orange-400">Projects</span>{" "}
       </h1>
-      <div className="grid grid-cols-3 gap-3" >
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-3" >
       <div
         ref={leftCardRef}
         className="bg-slate-200 hover:bg-slate-300 rounded-lg flex flex-col justify-center items-center py-10 px-5 "

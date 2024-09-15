@@ -66,55 +66,50 @@ function SignInForm() {
   }
   const [isLoading, setIsLoading] = useState(false);
 
+  // absolute top-[45%] left-1/2  transform translate-x-[-50%]
+  // translate-y-[-50%] z-200  border-4
   return (
-    <div className="w-full bg-gray-100 -z-200 relative  h-screen ">
+    // <div className="w-full bg-gray-100 -z-200 relative  min-h-screen">
       <div
         className="
-    flex shadow-custom rounded-3xl bg-white  
-    justify-around  items-center
-    
-    absolute top-[45%] left-1/2  transform translate-x-[-50%]
-    translate-y-[-50%] z-200
-       border-4 border-gray-400
-
-       md:flex-row flex-col 
-
-      
+    flex  bg-white  
+     items-center justify-center
+        border-gray-400
+       md:flex-row flex-col md:gap-8
       "
       >
-        <div className="flex flex-col   gap-4 ml-12 md:py-16 py-4 w-[280px]">
-          <img src="/assets/icons/logo.svg" className="px-0" />
+        <div className="flex flex-col gap-4  md:py-16 py-4">
+          <img src="/assets/icons/logo.svg" className="px-0 " />
 
-          <h1 className="font-bold md:text-2xl sm:text-xl w-[250px] ">
+          <h1 className="font-bold md:text-2xl sm:text-xl  ">
             Welcome to
             <br />
-            FreeLanceIT Online
+            Next Toppers
             <br />
             Learning Platform
           </h1>
           <img
             src={"/assets/icons/home.svg "}
             alt="google logo"
-            className=" md:w-56 w-50 h-40 "
+            className="md:w-56 w-50 h-40"
           />
         </div>
-
-        <div className="md:hidden flex flex-row ">
-          <div className="border-gray-300 ml-[20px]  w-[50px] border-[1px]  " />
+        <div className="md:hidden flex flex-row justify-start ">
+          <div className="border-gray-300 ml-[20px]  w-[80px] border-[1px]  " />
           <div className="border-gray-400  border-[1px]  w-[50px]" />
-          <div className="border-gray-800  border-[1px]  w-[150px] " />
+          <div className="border-gray-800  border-[1px]  w-[100px] " />
           <div className="border-gray-400 border-[1px]  w-[50px] " />
-          <div className="border-gray-300 border-[1px] w-[50px]  " />
+          {/* <div className="border-gray-300 border-[1px] w-[20px]  " /> */}
         </div>
         <div className="hidden md:flex flex-col ">
           <div className="border-gray-300 mt-[60px] border-[1px]  h-[50px]" />
           <div className="border-gray-400  border-[1px]   h-[50px]" />
           <div className="border-gray-800  border-[1px]  h-[150px]" />
           <div className="border-gray-400 border-[1px] h-[50px]" />
-          <div className="border-gray-300 border-[1px]   h-[50px]" />
+          <div className="border-gray-300 border-[1px]   h-[0px]" />
         </div>
 
-        <div className="px-16 md:py-4 py-8  w-[400px]">
+        <div className="px-0 md:py-4 py-8  ">
           <Form {...form}>
             <div className="sm:w-420 flex-col">
               <form
@@ -221,7 +216,7 @@ function SignInForm() {
           </Form>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

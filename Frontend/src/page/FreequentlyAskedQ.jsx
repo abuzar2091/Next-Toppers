@@ -11,10 +11,10 @@ function FrequentlyAskedQ() {
   console.log("click here  ", arrow);
   return (
     <div className="flex flex-col items-center justify-center w-full  pb-[60px] gap-[35px]">
-      <h1 className="text-3xl font-semibold">
+      <h1 className="sm:text-3xl text-xl font-semibold">
       FREQUENTLY ASKED QUESTIONS
       </h1>
-      <div className=" flex flex-col gap-4 w-[80%]">
+      <div className=" flex flex-col gap-4  w-[80%]">
         {frequentlyAsked.map((topic, index) => (
           <div
             className="flex items-center gap-2"
@@ -45,7 +45,7 @@ function FrequentlyAskedQ() {
               name="sortbylatest"
               placeholder={Object.keys(topic)}
               options={Object.values(topic)}
-              className="w-[100%]  font-medium  bg-gray-200 "
+              className="w-[100%]  font-medium text-[9px] sm:text-[13px] bg-gray-200 "
             />
           </div>
         ))}

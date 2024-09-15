@@ -17,37 +17,35 @@ function Courses() {
   const params = new URLSearchParams(location.search);
   const categoryName = params.get('category');
   const [showCourse,setShowCourse]=useState(false);
+  const width=`max-w-[520px]`
   const showMoreCourse=()=>{
         setShowCourse(true);
   }
   return (
     <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100">
-      <div className="flex flex-col items-start justify-start  mx-12 my-8 gap-[5px] p-5 md:px-5 bg-yellow-100 max-w-7xl rounded-[20px]">
+      <div className="flex flex-col items-start justify-start  mx-12 my-8 gap-[5px] md:p-5 p-4 bg-yellow-100 max-w-7xl rounded-[20px]">
         <h2 className="sub-route !font-medium">Home | Courses</h2>
 
-        <div className="flex md:flex-row flex-col justify-between items-center w-[99%]  ml-2.5 md:gap-[436px] gap-2 ">
+        <div className="flex md:flex-row flex-col md:justify-between justify-start  mt-4 w-[99%]  ml-2.5   gap-2 ">
           <h1
-            className="
-      
-          !font-semibold   
-          w-[65%]  
-          lg:text-[45px]  lg:w-[45%] text-[35px] md:w-[60%]
+            className="!font-semibold md:w-[60%]  
+          lg:text-[40px] w-[100%]    md:text-[35px] sm:text-[30px] text-[25px] 
           "
           >
-            FreeLanceIT Courses <br />
+            Next Toppers Courses <br />
             For All Standards
           </h1>
 
-          <div className="h-[210px] w-[32%] relative">
+          <div className="h-[210px] md:w-[32%] w-[100%] relative">
             <div className="h-[14px] w-full bottom-[1%] right-0 left-0 m-auto bg-black-900_cc backdrop-opacity-[0.5] blur-[81.00px] absolute rounded-[50%]" />
             <img
-              src="/assets/images/img_image_210x374.png"
-              alt="image_one"
-              className="justify-center h-[210px] w-[97%]  left-0 bottom-0 right-0 top-0  object-cover absolute"
+            src="/assets/images/img_image_210x374.png"
+              alt="study table"
+              className="justify-center h-[230px] md:w-[97%] w-[100%] left-0 bottom-0 right-0 top-0  object-cover absolute"
             />
             {/* flex flex-row justify-start w-[32%] left-[3%] top-0  absolute */}
-            <div className="flex flex-row justify-start w-[32%] ">
-              <div className="flex flex-col items-center justify-start w-full">
+            <div className="flex flex-row sm:justify-start sm:w-[32%] w-full">
+              <div className="flex flex-col items-center justify-start  w-full">
                 <div className="flex flex-col w-full gap-px">
                   <div className="flex flex-row justify-between items-center w-full text-deep_orange-400">
                     <p className="!font-airbnbcerealapp text-center !text-[15px] font-semibold">
@@ -288,7 +286,7 @@ function Courses() {
       </div>
 
       <div className="flex flex-col items-center  w-full gap-[47px]">
-        <div className={`flex w-full gap-5 ${showCourse && `overflow-x-scroll `} px-10`}>
+        <div className={`flex w-full gap-5  ${showCourse || `max-w-[520px]` ? 'overflow-x-scroll' : ''} px-10`}>
          <Link to="/courses/category?category=All Courses">
           <button className={`${categoryName==`All Courses` ?`bg-orange-300 text-white`:`bg-white`} text-gray-900  py-2 px-4 font-medium min-w-[150px] rounded-[10px]`}>
             All Courses
@@ -340,7 +338,7 @@ function Courses() {
             <h1 className="text-3xl font-semibold">Standard Classes</h1>
 
             <div className="flex flex-row justify-center w-full">
-              <div className="w-full grid gap-10 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-center md:gap-5">
+              <div className="w-full grid gap-10 xl:grid-cols-4 lg:grid-cols-3  md:grid-cols-2 justify-center lg:gap-4">
                 <FreelanceEduCourses className="flex flex-col items-center justify-start w-full " />
                 <FreelanceEduCourses
                   standard={"Standard Two"}
@@ -427,116 +425,116 @@ function Courses() {
           </div>
         </div>
         }
-
       </div>
 
-      {/* <div className="flex flex-col justify-center items-center gap-8 w-full">
-        <div className="flex flex-col items-center justify-start w-full gap-[50px] px-12 max-w-7xl">
-          <div className="flex flex-col items-start justify-start w-full pt-0.5 gap-2.5">
-            <h1 className="text-3xl font-semibold">
-              Other Courses For High School
-            </h1>
-
-            <div className="flex sm:flex-row flex-col justify-start w-full gap-[15px] sm:gap-5 ">
-              <div className="relative md:w-[70%] sm:w-[60%] gap-[35px]  ">
-                <Input
-                  name="search"
-                  placeholder="Search Class, Course, Book Name"
-                  value={searchBarValue}
-                  onChange={(e) => setSearchBarValue(e)}
-                  type="text"
-                  className="text-gray-700 rounded-tr-[10px] rounded-br-[10px] font-medium h-12"
-                />
-                <div className="bg-orange-600 w-7 h-7 absolute top-[10px] right-3  rounded-sm">
-                  <img
-                    src="/assets/icons/img_search.svg"
-                    alt="search"
-                    className="m-[6px] w-4 h-4 pointer-events-none "
-                  />
-                </div>
-              </div>
-
-              <SelectBox
-                shape="round"
-                indicator={
-                  <img src="/assets/icons/img_arrowdown.svg" alt="arrow_down" />
-                }
-                name="sortbylatest"
-                placeholder="Sort by: Latest"
-                options={dropDownOptions}
-                className="md:w-[30%]  sm:w-[35%] font-medium  bg-white "
-              />
-            </div>
-          </div>
-
-          <div className="justify-center w-full gap-10 sm:grid-cols-2  grid-cols-1 md:gap-5 grid">
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_103x160.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_2.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_3.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              //   imageOne="/assets/images/img_image_4.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_2.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_103x160.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_3.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              //   imageOne="/assets/images/img_image_4.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_2.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-            <FreelanceCoursesDetailsCard
-              imageOne="/assets/images/img_image_103x160.png"
-              className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
-            />
-          </div>
-        </div>
-        <div className="flex flex-row justify-between items-center  w-[35%]">
-          <button className="w-[15%] h-[40px] px-6 rounded-[5px] bg-white">
-            <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" />
-          </button>
-          <p className="!text-gray-900 !font-medium text-base leading-5">
-            Page
-          </p>
-          <button
-            size="sm"
-            className="!text-gray-700 font-medium min-w-[42px] h-[36px] px-[15px] text-lg rounded-lg bg-white"
-          >
-            5
-          </button>
-          <p className="!text-gray-900 !font-medium text-base leading-5 ">
-            of 80
-          </p>
-          <button className="w-[15%] h-[40px] px-6 rounded-[5px] bg-red-300">
-            <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
-          </button>
-        </div>
-      </div>
-
-      <Footer /> */}
     </div>
   );
 }
 
 export default Courses;
+
+{/* <div className="flex flex-col justify-center items-center gap-8 w-full">
+  <div className="flex flex-col items-center justify-start w-full gap-[50px] px-12 max-w-7xl">
+    <div className="flex flex-col items-start justify-start w-full pt-0.5 gap-2.5">
+      <h1 className="text-3xl font-semibold">
+        Other Courses For High School
+      </h1>
+
+      <div className="flex sm:flex-row flex-col justify-start w-full gap-[15px] sm:gap-5 ">
+        <div className="relative md:w-[70%] sm:w-[60%] gap-[35px]  ">
+          <Input
+            name="search"
+            placeholder="Search Class, Course, Book Name"
+            value={searchBarValue}
+            onChange={(e) => setSearchBarValue(e)}
+            type="text"
+            className="text-gray-700 rounded-tr-[10px] rounded-br-[10px] font-medium h-12"
+          />
+          <div className="bg-orange-600 w-7 h-7 absolute top-[10px] right-3  rounded-sm">
+            <img
+              src="/assets/icons/img_search.svg"
+              alt="search"
+              className="m-[6px] w-4 h-4 pointer-events-none "
+            />
+          </div>
+        </div>
+
+        <SelectBox
+          shape="round"
+          indicator={
+            <img src="/assets/icons/img_arrowdown.svg" alt="arrow_down" />
+          }
+          name="sortbylatest"
+          placeholder="Sort by: Latest"
+          options={dropDownOptions}
+          className="md:w-[30%]  sm:w-[35%] font-medium  bg-white "
+        />
+      </div>
+    </div>
+
+    <div className="justify-center w-full gap-10 sm:grid-cols-2  grid-cols-1 md:gap-5 grid">
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_103x160.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_2.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_3.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        //   imageOne="/assets/images/img_image_4.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_2.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_103x160.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_3.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        //   imageOne="/assets/images/img_image_4.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_2.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+      <FreelanceCoursesDetailsCard
+        imageOne="/assets/images/img_image_103x160.png"
+        className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+      />
+    </div>
+  </div>
+  <div className="flex flex-row justify-between items-center  w-[35%]">
+    <button className="w-[15%] h-[40px] px-6 rounded-[5px] bg-white">
+      <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" />
+    </button>
+    <p className="!text-gray-900 !font-medium text-base leading-5">
+      Page
+    </p>
+    <button
+      size="sm"
+      className="!text-gray-700 font-medium min-w-[42px] h-[36px] px-[15px] text-lg rounded-lg bg-white"
+    >
+      5
+    </button>
+    <p className="!text-gray-900 !font-medium text-base leading-5 ">
+      of 80
+    </p>
+    <button className="w-[15%] h-[40px] px-6 rounded-[5px] bg-red-300">
+      <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
+    </button>
+  </div>
+</div>
+
+<Footer /> */}

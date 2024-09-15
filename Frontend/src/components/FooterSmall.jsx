@@ -35,7 +35,7 @@ function FooterSmall() {
   ];
   return (
     <>
-      <div className="flex flex-col items-center justify-center   pb-[60px] gap-[35px]">
+      <div className="flex flex-col items-center justify-center w-[100%]   pb-[60px] gap-[35px]">
         {/* <div className="flex flex-col items-center justify-center w-[97%]  gap-[15px]"> */}
 
         <SelectBox

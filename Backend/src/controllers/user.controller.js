@@ -137,6 +137,7 @@ const enrollCourse= wrapAsyncHandler(async (req, res) => {
     { $push: { myCourses: courseId } }, // Add courseId to myCourses array
     { new: true }
   );
+  console.log("user ji",user);
   return res
     .status(200)
     .json(new ApiResponse(200, {user}, "You Enrolled in Course Successfully!"));

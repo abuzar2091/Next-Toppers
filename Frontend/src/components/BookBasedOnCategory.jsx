@@ -132,7 +132,7 @@ const filteredBook = dropDownFilter?.filter(book =>
         <div className="flex flex-col items-center justify-start  w-[100%] mt-10 gap-10">
           {/* <div className="flex flex-col items-center justify-start w-full gap-[30px]"> */}
           <div className="flex md:flex-row  flex-col justify-start w-full gap-[15px] sm:gap-5 ">
-              <div className="relative lg:w-[70%]  md:w-[60%] gap-[35px]  ">
+              <div className="relative lg:w-[70%] mx-4  md:w-[60%] gap-[35px]  ">
                 <Input
                   name="search"
                   placeholder="Search Class, Course, Book Name"
@@ -161,11 +161,13 @@ const filteredBook = dropDownFilter?.filter(book =>
                 placeholder="Sort by: Latest"
                options={dropDownOptions}
                 onChange={(option) => setFilter(option.value)}
-                className="lg:w-[30%] md:w-[40%]  font-medium  bg-white "
+                className="lg:w-[30%] md:w-[40%] mx-4 font-medium  bg-white "
               />
             </div>
 
-            <div className="justify-center w-full  gap-[15px] lg:grid-cols-3 md:grid-cols-2 grid-cols-1 grid">
+            <div className="justify-center w-full 
+            gap-[15px] lg:px-4 sm:px-8 px-10
+            lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 grid">
               {displayedBooks.length>0 ? displayedBooks?.map((bookByCategory) => 
                         // categoryGroup?.shops?.map((bookByCategory)=>
                             {   const image = images[currentIndex % images.length];

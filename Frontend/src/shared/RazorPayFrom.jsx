@@ -21,7 +21,7 @@ const RazorpayForm = ({fullName,email,phone}) => {
       //WAGtKbCkWvevlDQMS4506Cn6
       amount: 100, // Amount in paise
       currency: 'INR',
-      name: 'FreeLanceIT LAB',
+      name: 'Next Toppers LAB',
       description: 'Test Transaction',
       image:'/assets/images/freelanceitlogo.png',
       //'https://example.com/your_logo.png',
@@ -46,14 +46,9 @@ const RazorpayForm = ({fullName,email,phone}) => {
        // #F37254'
       }
     };
-
     const razorpay = new window.Razorpay(options);
-
-
     const data=razorpay.open();
     console.log(data);
-
-
     // const rzp1 = new window.Razorpay(options);
 //     razorpay.on('payment.failed', function (response){
 //         alert(response.error.code);

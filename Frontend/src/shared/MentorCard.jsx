@@ -17,11 +17,11 @@ export default function Mentorcard({
   return (
     <div {...props} className="">
       <Link to={`/mentors/${data._id}`}>
-      <div className="flex flex-col items-center justify-start h-[290px] w-[260px]">
+      <div className="flex flex-col items-center justify-start lg:h-[250px] lg:w-[230px]">
         <img
           src={img}
           alt="image"
-          className="w-[290px]  object-cover rounded-[10px]"
+          className="lg:w-[280px]  object-cover rounded-[10px]"
         />
       </div>
       </Link>

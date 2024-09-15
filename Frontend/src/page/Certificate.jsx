@@ -25,11 +25,11 @@ function GetCertificate({courseId={courseId}}) {
       checkIsLoggedIn();
     },[])
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-2 px-20">
+    <div className="flex flex-col items-center justify-center w-full gap-2 sm:px-20 px-6">
       <h1 className="text-3xl font-semibold">
         Get <span className="text-orange-400">Certified</span>
       </h1>
-      <div className="flex">
+      <div className="flex sm:flex-row flex-col">
       <div className="flex flex-col gap-3">
         <div>
       <p className="leading-[30px] flex items-center gap-3 text-base font-normal">
@@ -58,9 +58,9 @@ function GetCertificate({courseId={courseId}}) {
       </p>
     </div>
       {/* <Link to="/pages.razorpay.com/unnayan-june"> */}
-        <div className="flex gap-1 mt-8 ml-4 items-center justify-center bg-orange-500 text-white  rounded-lg
+        <div className="hidden sm:flex gap-1 mt-8 ml-4 items-center justify-center bg-orange-500 text-white  rounded-lg
          px-4 py-2 hover:bg-orange-400 w-[250px]">
-{userdata?.myCourses?.filter((id)=>id===courseId)?(
+           {userdata?.myCourses?.filter((id)=>id===courseId)?(
         <button className="!font-semibold text-[25px] disabled">
           Already Enrolled
           </button>):( 
@@ -84,6 +84,27 @@ function GetCertificate({courseId={courseId}}) {
       <div className="flex flex-col justify-center items-center gap-2">
         <p className="text-[18px] font-semibold">Start Your Learning Journey Today!</p>
         <img src="/assets/images/certificate.png" alt="completion certificate"/>
+        <div className="sm:hidden flex gap-1 mt-8 ml-4 items-center justify-center bg-orange-500 text-white  rounded-lg
+         px-4 py-2 hover:bg-orange-400 w-[300px]">
+{userdata?.myCourses?.filter((id)=>id===courseId)?(
+        <button className="!font-semibold text-[25px] disabled">
+          Already Enrolled
+          </button>):( 
+            loggedIn?(
+              <Link to="/pages.razorpay.com/unnayan-june">
+         <button className="!font-semibold text-[25px] 
+          "> Enroll Now</button> 
+          </Link>
+            ):(
+              <Link to="/sign-in">
+              <button className="!font-semibold text-[25px]   
+               "> Enroll Now</button> 
+               </Link>
+            )
+          )
+          }
+          <ChevronRight className="mt-1" />
+        </div>
       </div>
       </div>
     </div>

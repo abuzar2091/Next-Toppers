@@ -21,7 +21,7 @@ function NewBatch() {
     },[])
     //console.log(launchCourse?.newCourse._id);
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col gap-4 items-center px-4">
         <h1 className="!font-semibold text-orange-400 text-[22px]">NEW JUNE'24 BATCH 🔥</h1>
         <p className="!font-semibold text-[18px]">UNNAYAN 2.0 : GRAPHIC DESIGN </p>
         <img src="/assets/images/batchgraphic.png"

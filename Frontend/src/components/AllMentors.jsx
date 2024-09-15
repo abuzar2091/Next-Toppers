@@ -19,7 +19,7 @@ const { data: facultyMentor, isLoading, error } = useQuery({
 });
 const [currentPage, setCurrentPage] = useState(1);
 const cardsPerPage = 12;
-console.log("faculty babu ",facultyMentor);
+// console.log("faculty babu ",facultyMentor);
 const startIndex = (currentPage - 1) * cardsPerPage;
 const endIndex = startIndex + cardsPerPage;
 let displayedMentor=[];
@@ -62,20 +62,19 @@ useEffect(()=>{
 
   return (
     <div className="bg-gray-100">
-      <div className="mx-12 flex flex-col gap-12 ">
+      <div className="sm:mx-12 flex flex-col gap-12 mx-6 ">
         <div className="flex flex-col items-start justify-start w-full gap-[5px] p-5  md:px-5 bg-red-50 my-8  max-w-7xl rounded-[20px]">
           <p className="mt-[5px]  md:ml-0 !text-black !font-medium">
             Home | Our Mentors
           </p>
-          <div className="flex sm:flex-row flex-col justify-between  items-center w-[99%]  ml-2.5  ">
+          <div className="flex sm:flex-row flex-col  w-[99%]  ml-2.5  ">
             <h1
               className="
-              w-[65%] !font-semibold  
-               lg:text-[45px]  lg:w-[45%] text-[35px] md:w-[60%]
-            
+            lg:text-[40px] font-semibold  md:w-[60%]
+             lg:w-[75%] md:text-[35px]  text-[25px]
             "
             >
-              FreelanceIT has the
+              Next Toppers have the
               <br />
               qualified mentor
             </h1>
@@ -83,12 +82,12 @@ useEffect(()=>{
             <img
               src="assets/images/img_kisspng_bookcas.png"
               alt="book-img"
-              className="object-cover sm:w-1/3 w-[50%]"
+              className="object-cover mx-auto sm:w-1/3 w-[80%]"
             />
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center gap-12">
-          <div className="grid cursor-pointer lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10">
+        <div className="flex flex-col items-center gap-12">
+          <div className="grid cursor-pointer xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-10">
             {displayedMentor.length>0 && displayedMentor?.map((mentor, index) => 
              {   const image = mentorsImg[currentIndex % mentorsImg.length];
                 currentIndex += 1;
@@ -103,9 +102,9 @@ useEffect(()=>{
             )}
           </div>
 
-          <div className="flex flex-row justify-between items-center w-[35%]">
+          <div className="flex flex-row justify-between items-center lg:w-[35%] w-[70%]">
             <button onClick={handleViewLess} disabled={currentPage === 1}  className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-white">
-              <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" />
+              <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" className="mx-auto" />
             </button>
             <p className="!text-gray-900 !font-medium text-base leading-5">
               Page
@@ -121,7 +120,7 @@ useEffect(()=>{
             </p>
             <button onClick={handleViewMore}
             disabled={currentPage === totalPages}  className="w-[15%] h-[40px] px-3.5 rounded-[5px] bg-red-300 hover:bg-red-400">
-              <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
+              <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" className="mx-auto" />
             </button>
           </div>
         </div>

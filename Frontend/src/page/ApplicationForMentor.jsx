@@ -120,19 +120,19 @@ function ApplicationFormForMentor() {
     }
   }
   return (
-    <div className=" bg-gray-100  h-screen ">
+    <div className=" bg-gray-100  min-h-screen ">
       <div
-        className="flex   shadow-custom rounded-3xl bg-white   justify-center    z-100  border-gray-400
+        className="flex   bg-white   justify-center  border-gray-400
       md:flex-row flex-col
       "
       >
-        <div className="flex flex-col gap-4 ml-12 md:py-16 py-4 w-[350px]">
+        <div className="flex flex-col gap-4  md:py-16 py-4 mx-auto ">
           <img src="/assets/icons/logo.svg" className="px-0" />
 
-          <h1 className="font-bold text-2xl text-center sm:text-xl w-[250px] ">
+          <h1 className="font-bold sm:text-2xl text-center text-xl w-[250px] ">
             Welcome to
             <br />
-            FreeLanceIT to
+            Next Toppers to
             <br />
             Joining as A Mentor
           </h1>
@@ -143,7 +143,7 @@ function ApplicationFormForMentor() {
           />
         </div>
 
-        <div className="md:hidden flex flex-row ">
+        <div className="md:hidden flex flex-row justify-center">
           <div className="border-gray-300 ml-[20px]  w-[50px] border-[1px]  " />
           <div className="border-gray-400  border-[1px]  w-[50px]" />
           <div className="border-gray-800  border-[1px]  w-[150px] " />
@@ -158,14 +158,14 @@ function ApplicationFormForMentor() {
           <div className="border-gray-300 border-[1px]   h-[50px]" />
         </div>
 
-        <div className="px-16  md:py-4 py-8  w-[50%]">
+        <div className="px-16  md:py-4 py-8  w-[100%] md:w-[50%]">
           <Form {...control}>
             <div className="sm:w-420 flex-col ">
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col  gap-2 w-full mt-1"
               >
-                <p className="font-bold text-2xl  sm:text-xl w-[250px]">
+                <p className="font-bold sm:text-2xl  text-xl w-[250px]">
                   Basic Information
                 </p>
                 <FormField

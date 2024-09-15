@@ -41,28 +41,28 @@ function JoinUs() {
     }
   }, [currentIndex, currentText, words]);
   return (
-    <div className="flex flex-col   w-100% bg-slate-200 py-20">
+    <div className="flex flex-col  bg-slate-200 py-20">
       <div className="flex flex-col items-center">
-        <h1 className="!font-bold text-black text-[30px]">JOIN US ON</h1>
+        <h1 className="!font-semibold text-black lg:text-[45px] md:text-[35px] text-[25px]">JOIN US ON</h1>
         <span className={`animate-typewriter text-[20px] ${currentNumber==0?`text-red-600`:currentNumber==1?`text-orange-400`:`text-blue-300`}  min-h-8`}>
           {currentText}
         </span>
       </div>
-      <div className="flex justify-around mt-20 ">
+      <div className="flex justify-around sm:mt-20 mt-4">
         <div className="flex flex-col items-center">
-            <img src="/socialmedia/youtubelogo.png" className="h-12"/>
-            <p>Youtube</p>
-            <p className="!font-semibold">FREELANCEIT</p>
+            <img src="/socialmedia/youtubelogo.png" className="sm:h-12 h-8"/>
+            <p className="sm:text-[15px] text-[12px]">Youtube</p>
+            <p className="!font-semibold sm:text-[15px] text-[12px]">Next Toppers</p>
         </div>
         <div className="flex flex-col items-center">
-            <img src="/socialmedia/instagram.png" className="h-12"/>
-            <p>Instagram</p>
-            <p className="!font-semibold">FREELANCEIT EDUCATION</p>
+            <img src="/socialmedia/instagram.png" className="sm:h-12 h-8"/>
+            <p className="sm:text-[15px] text-[12px]">Instagram</p>
+            <p className="!font-semibold sm:text-[15px] text-[12px]">Next Toppers EDUCATION</p>
         </div>
         <div className="flex flex-col items-center">
-            <img src="/socialmedia/telegram.png" className="h-12"/>
-            <p>Telegram</p>
-            <p className="!font-semibold">FREELANCEIT</p>
+            <img src="/socialmedia/telegram.png" className="sm:h-12 h-8"/>
+            <p className="sm:text-[15px] text-[12px]">Telegram</p>
+            <p className="!font-semibold sm:text-[15px] text-[12px]">Next Toppers</p>
         </div>
 
       </div>

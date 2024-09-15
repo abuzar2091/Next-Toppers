@@ -40,36 +40,36 @@ if (isLoading) return <div>Loading...</div>;
 if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="flex flex-col justify-center w-full bg-gray-100 ">
-      <div className="flex flex-row justify-center w-full md:px-12 px-5 py-8 max-w-7xl">
+      <div className="flex flex-row justify-center w-full md:px-6 px-5 py-8 max-w-7xl">
         <div className="flex flex-col items-start justify-start w-full">
-          <div className="flex flex-row justify-start w-full p-[29px] sm:p-5 bg-red-50 rounded-[20px]">
+          <div className="flex flex-row justify-start w-full p-[30px] sm:p-5 bg-red-50 rounded-[20px]">
             <p className="mb-[92px] !text-black !font-medium ">
               Home | Mentor | {facultyMentor.mentorDetails.fullName}
             </p>
           </div>
 
-          <div className="flex flex-row justify-start w-[32%] md:w-full mt-[-81px] ml-[30px] ">
+          <div className="flex flex-row justify-start w-[30%] md:w-full mt-[-81px] ml-[30px] ">
             <div className="flex flex-row  justify-start items-center w-full gap-5 ">
               <img
                 src="/assets/images/img_bg_170x170.png"
                 alt="bg_one"
-                className="w-[170px]  mb-px object-cover rounded-[10px]"
+                className="md:w-[170px]  mb-px object-cover rounded-[10px] sm:pb-0 pb-20"
               />
-              <div className="flex flex-col items-start justify-start w-[53%] mt-[100px] sm:w-full gap-0.5">
-                <p className="!text-gray-900 text-3xl font-medium">
+              <div className="flex flex-col items-start justify-start  sm:mt-[100px] mt-[50px] w-[90%] gap-0.5">
+                <p className="!text-gray-900 md:text-3xl text-lg w-[100%] sm:font-medium">
                  {facultyMentor.mentorDetails.fullName}
                 </p>
-                <p className="text-lg font-medium ">Founder & Mentor</p>
+                <p className="sm:text-lg text-[10px] font-medium">Founder & Mentor</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-row justify-center w-full">
-        <div className="flex lg:flex-row flex-col  lg:justify-start lg:items-start items-center w-full gap-10 md:gap-5 px-12 max-w-7xl">
-          <div className="flex flex-col  justify-start w-[66%]  gap-[29px]">
-            <div className="flex flex-row flex-wrap  justify-start w-full gap-[19px] ">
+      <div className="flex sm:flex-row justify-center w-full">
+        <div className="flex  lg:flex-row flex-col  lg:justify-start lg:items-start items-center w-full gap-10  max-w-7xl px-4">
+          <div className="flex flex-col justify-start lg:w-[66%] w-[100%] px-2 gap-[29px]">
+            <div className="flex flex-row overflow-x-scroll justify-start sm:gap-[19px] gap-[16px] ">
               <button onClick={handleAbout} className={`py-2 font-medium min-w-[142px] rounded-[10px] ${seedetail===0?`bg-orange-300 text-white`:`bg-white`} text-black`}>
                 About
               </button>
@@ -86,7 +86,7 @@ if (error) return <div>Error: {error.message}</div>;
             
             {seedetail==0 && <div className="flex flex-col items-center justify-start w-full gap-[29px]">
               <div className="flex flex-col items-start justify-start w-full gap-2">
-                <h1 className="text-3xl font-semibold">About {facultyMentor.mentorDetails.fullName}</h1>
+                <h1 className="sm:text-3xl text-lg font-semibold">About {facultyMentor.mentorDetails.fullName}</h1>
                 <p className="!leading-[30px]">
                   {facultyMentor.experience}
                   <br/>
@@ -94,7 +94,7 @@ if (error) return <div>Error: {error.message}</div>;
                 </p>
               </div>
               <div className="flex flex-col items-start justify-start w-full gap-2">
-                <h1 className="text-3xl font-semibold">Certification</h1>
+                <h1 className="sm:text-3xl text-lg font-semibold">Certification</h1>
                 <p className="!leading-[30px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -209,6 +209,7 @@ if (error) return <div>Error: {error.message}</div>;
           </div>
         </div>
       </div>
+
       <footer className="mt-8">
         <Footer />
       </footer>

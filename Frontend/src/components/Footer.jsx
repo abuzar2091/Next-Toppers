@@ -43,24 +43,23 @@ function Footer() {
   return (
     <footer className="flex flex-col gap-[100px] items-center justify-center w-full">
       <div className="flex flex-col md:flex-row justify-between w-[90%] items-center py-[10px] gap-4 lg:px-[50px] my-12  bg-black    max-w-7xl rounded-[20px]">
-        <div className="flex md:flex-col items-start justify-center w-full md:w-[16%] md:gap-[57px] my-[11px] ">
+        <div className="flex md:flex-col items-start justify-center w-full md:w-[16%] md:gap-[57px] my-[11px]">
           <img
             src="/assets/images/img_ellipse_169.png"
             alt="circleimage"
-            className="h-[60px] w-[60px] ml-[15px] rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px] ml-[15px] rounded-[50%]"
           />
           <img
             src="/assets/images/img_ellipse_170.png"
             alt="circleimage_one"
-            className="h-[60px] w-[60px]  ml-[127px]  rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px]  sm:ml-[127px] ml-[60px] rounded-[50%]"
           />
           <img
             src="/assets/images/img_ellipse_171.png"
             alt="circleimage_two"
-            className="h-[60px] w-[60px]  ml-[30px] rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px]  sm:ml-[20px] ml-[50px] rounded-[50%]"
           />
         </div>
-
         <div className="flex flex-col items-center justify-center w-[80%] md:w-[49%]  gap-8">
           <div className="flex flex-col items-center justify-start w-full pb-[3px] gap-4 md:gap-[26px]">
             <h1 className="!text-white text-2xl !font-metropolis text-center lg:text-[45px] font-bold md:leading-[45px]">
@@ -69,11 +68,11 @@ function Footer() {
               Every New Courses
             </h1>
             <p className="!text-gray-500 text-center !text-base !font-normal   leading-5">
-              10k+ students daily learn with FreelanceIT. Subscribe for new
+              10k+ students daily learn with Next Toppers. Subscribe for new
               courses.
             </p>
           </div>
-          <div className="flex flex-row  justify-center w-full ">
+          <div className="flex sm:flex-row sm:gap-0 flex-col gap-4 justify-center w-full ">
             <Input
               shape="round"
               type="email"
@@ -84,9 +83,9 @@ function Footer() {
               }
               required
               placeholder="enter your email"
-              className="w-[50%] text-black  font-medium rounded-tr-[0px] rounded-br-[0px] "
+              className="sm:w-[50%] text-black  font-medium sm:rounded-tr-[0px] sm:rounded-br-[0px]  rounded-[10px]"
             />
-            <button className="bg-red-400 h-[40px] text-white text-base rounded-tr-[10px] rounded-br-[10px] font-medium min-w-[130px]" onClick={handleSubmit}>
+            <button className="bg-red-400 h-[40px] text-white text-base sm:rounded-tl-[0px] sm:rounded-bl-[0px] rounded-[10px] font-medium min-w-[130px]" onClick={handleSubmit}>
               { !submitform?"Subscribe":"Subscribing..."}
             </button>
           </div>
@@ -97,17 +96,17 @@ function Footer() {
           <img
             src="/assets/images/img_ellipse_166.png"
             alt="circleimage"
-            className="h-[60px] w-[60px]  mr-[30px]  rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px] sm:mr-[30px] mr-[10px]  rounded-[50%]"
           />
           <img
             src="/assets/images/img_ellipse_167.png"
             alt="circleimage"
-            className="h-[60px] w-[60px]  mr-[127px]  rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px]  mr-[100px]  rounded-[50%]"
           />
           <img
             src="/assets/images/img_ellipse_168.png"
             alt="circleimage"
-            className="h-[60px] w-[60px] mr-[15px] rounded-[50%]"
+            className="sm:h-[60px] sm:w-[60px] w-[50px]  mr-[15px] rounded-[50%]"
           />
         </div>
       </div>
@@ -148,10 +147,10 @@ function Footer() {
             </div>
 
             <div className="flex flex-col items-start justify-start w-full gap-3.5">
-              <p className="!text-base !font-normal">©2024 FreelanceIT</p>
+              <p className="!text-base !font-normal">©2024 Next Toppers</p>
               <p className=" !text-base !font-normal ">
                 {" "}
-                FreelanceIT is a registered{" "}
+                Next Toppers is a registered{" "}
               </p>
             </div>
           </div>
@@ -218,7 +217,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="md:hidden">
+      <div className="md:hidden w-[95%]">
         <FooterSmall />
       </div>
     </footer>

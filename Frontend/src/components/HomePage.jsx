@@ -71,11 +71,11 @@ function HomePage() {
     setMonthlyEnrollment(100);
   }, [inView, happyLearner,monthlyEnrollment]);
   return (
-    <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100 ">
-      <div className="flex items-center  mx-12 my-8 gap-[5px]   bg-red-50 max-w-7xl rounded-[20px]">
-        <div className="flex flex-col w-[65%] py-8 items-start justify-start  mx-12 my-8 gap-[5px] p-5 md:px-5 bg-red-50 max-w-7xl rounded-[20px]">
-          <h1 className="!font-semibold w-[100%] lg:text-[45px] text-[35px]">
-            FreeLanceIT{" "}
+    <div className="flex flex-col sm:justify-start w-full gap-[50px] bg-gray-100 ">
+      <div className="flex md:flex-row flex-col items-center  mx-12 my-8 gap-[0px]   bg-red-50 max-w-7xl rounded-[20px] md:px-12 pb-10">
+        <div className="flex flex-col w-[80%] py-8 items-start justify-start mx-0 my-8 gap-[0px] p-0 bg-red-50 max-w-7xl rounded-[20px]">
+          <h1 className="!font-semibold w-[100%]  lg:text-[45px] sm:text-[35px] text-[20px]">
+            Next Toppers{" "}
             <span className="animate-typewriter text-orange-300">
               {currentText}
             </span>
@@ -90,36 +90,37 @@ function HomePage() {
             </button>
           </Link>
         </div>
-        <div className="w-[20%]">
+        <div className="md:w-[50%] w-[100%]">
           <img
             src="/assets/images/freelance.jpg"
-            className="rounded-lg object-cover w-[250px]"
+            className="rounded-lg object-cover w-[250px] mx-auto"
           />
         </div>
       </div>
 
-      <div ref={ref} className="!font-semibold text-[25px] text-center">
+      <div ref={ref} className="!font-semibold sm:text-[25px] text-[15px] text-center">
         <h2 >BANGLADESH'S MOST LOVED ONLINE LEARNING PLATFROM ❤️</h2>
-        <div className="flex justify-center gap-[200px] mt-8">
+        <div className="flex justify-center sm:gap-[200px] mt-8">
 
-          <div className="flex items-center flex-col">
+          <div className="flex items-center flex-col px-6">
             <div className="flex gap-2 items-center">
-              <UsersRound /> <p>{happyLearner}+</p>
+              {/* <UsersRound /> */}
+               <p>{happyLearner}+</p>
             </div>
-            <p className="!font-semibold text-[20px]">HAPPY LEARNERS</p>
+            <p className="!font-semibold sm:text-[20px]">HAPPY LEARNERS</p>
           </div>
           <div className="flex items-center flex-col">
               <div className="flex gap-2 items-center">
                 <Connection /> <p>{monthlyEnrollment}+</p>
               </div>
-              <p className="!font-semibold text-[20px]">NEW MONTHLY ENROLLMENT</p>
+              <p className="!font-semibold sm:text-[20px]">NEW MONTHLY ENROLLMENT</p>
           </div>
         </div>
         
       </div>
       <NewBatch/>
       <Testimonial/>
-      <JoinUs className="w-100%"/>
+      <JoinUs className=''/>
       <Footer />
     </div>
   );

@@ -100,7 +100,7 @@ if(booksByCategory?.length>0)
     </div>
 
 
-    <div className= {`max-h-[600px] flex flex-col w-full gap-[15px] ${rowsToShow2>1?`overflow-y-scroll`:``} `}>
+    <div className= {`max-h-[620px] flex flex-col w-full gap-[15px] ${rowsToShow2>1?`overflow-y-scroll`:``} `}>
       <h2 className="text-3xl font-semibold"> New Arrivals</h2>
 
       <div className="flex flex-col gap-[15px]">

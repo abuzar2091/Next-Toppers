@@ -170,7 +170,7 @@ function Shop() {
     return (
       <div className="flex flex-col items-center justify-between min-h-[1100px] w-[100%]  gap-10">
         {/* <div className="flex flex-col items-center justify-start w-full gap-[30px]"> */}
-        <div className="justify-center w-full  gap-[15px] lg:grid-cols-3 md:grid-cols-2 grid-cols-1 grid">
+        <div className="justify-center w-full  gap-[15px] lg:px-4 sm:px-8 px-10 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 grid">
           {displayedBooks.length > 0 ? (
             displayedBooks?.map((bookByCategory) =>
               // categoryGroup?.shops?.map((bookByCategory)=>
@@ -224,9 +224,9 @@ function Shop() {
     );
   };
   return (
-    <div className="flex flex-col items-center justify-start w-full gap-[50px] bg-gray-100 ">
+    <div className="flex flex-col  w-full gap-[50px] bg-gray-100 ">
       <div className="flex flex-col  justify-start items-start gap-10 ">
-        <div className="flex flex-row items-center justify-start w-[100%]  gap-4">
+        <div className="flex flex-row items-center justify-start w-[100%] overflow-x-auto gap-4 px-6">
           <Link to="/shop/category?category=All Books">
             <button
               className={`text-black ${
@@ -266,7 +266,7 @@ function Shop() {
                 categoryName === `Computer Science`
                   ? `bg-orange-400 text-white`
                   : `bg-white`
-              } py-2 px-0   lg:px-10 font-medium min-w-[150px] rounded-[10px]`}
+              } py-2 px-0   lg:px-6 font-medium min-w-[150px] rounded-[10px]`}
             >
               Computer Science
             </button>
@@ -276,7 +276,7 @@ function Shop() {
 
         {!categoryName && (
           <div className="flex md:flex-row  flex-col justify-start w-full gap-[15px] sm:gap-5 ">
-            <div className="relative lg:w-[70%]  md:w-[60%] gap-[35px]  ">
+            <div className="relative lg:w-[70%] mx-4 md:w-[60%] gap-[35px]  ">
               <Input
                 name="search"
                 placeholder="Search Class, Course, Book Name"
@@ -304,7 +304,7 @@ function Shop() {
               placeholder="Sort by: Latest"
               options={dropDownOptions}
               onChange={(option) => setFilter(option.value)}
-              className="lg:w-[30%] md:w-[40%]  font-medium  bg-white "
+              className="lg:w-[30%] md:w-[40%] mx-4 font-medium  bg-white "
             />
           </div>
         )}

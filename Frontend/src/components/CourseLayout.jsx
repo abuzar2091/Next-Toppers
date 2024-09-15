@@ -129,7 +129,7 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
          <div className="flex flex-col justify-center items-center gap-8 w-full">
           <div className="flex flex-col items-center justify-start w-full gap-[50px] px-12 max-w-7xl">
           <div className="flex flex-col items-start justify-start w-full pt-0.5 gap-2.5">
-            <h1 className="text-3xl font-semibold">
+            <h1 className="sm:text-3xl text-2xl font-semibold">
               Other Courses 
             </h1>
           
@@ -141,7 +141,7 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
                   value={searchBarValue}
                   onChange={(e) => setSearchBarValue(e.target.value)}
                   type="text"
-                  className="text-gray-700 pl-6 rounded-tr-[10px] rounded-br-[10px] font-medium text-[16px] h-12"
+                  className="text-gray-700 md:pl-6 rounded-tr-[10px] rounded-br-[10px] font-medium md:text-[16px] h-12"
                 />
                 <div className="bg-orange-600 cursor-pointer w-7 h-7 absolute top-[10px] right-3  rounded-sm">
                   <img
@@ -166,23 +166,24 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
               />
             </div>
           </div>        
-          <div className="justify-center w-full gap-10 sm:grid-cols-2 grid-cols-1 md:gap-5 grid">
+          <div className="justify-center w-full gap-3 sm:grid-cols-2 grid-cols-1 md:gap-5  grid">
           {displayedCourses.length > 0 ? displayedCourses.map((course) => (
           <FreelanceCoursesDetailsCard
             key={course._id} 
             imageOne="/assets/images/img_image_103x160.png"
             thethree={course.courseName}
-            className="flex flex-row justify-start w-full gap-6 p-[15px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
+            className="flex flex-row justify-start w-full gap-6 sm:p-[15px] p-[10px] bg-white cursor-pointer rounded-[10px] hover:shadow-xs"
           />
         )):(
             <p className="text-[20px]">No results found for {searchBarValue}</p>
         )}
-      </div>
         </div>
-        <div className="flex flex-row justify-between items-center  w-[35%]">
-          <button onClick={handleViewLess} className="w-[15%] h-[40px] px-6 rounded-[5px] bg-white"
+        </div>
+        <div className="flex flex-row justify-between items-center  md:w-[35%] sm:w-[50%]
+        w-[70%]">
+          <button onClick={handleViewLess} className="w-[15%] h-[40px]  rounded-[5px] bg-white"
           disabled={currentPage === 1}>
-            <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" />
+            <img src="/assets/icons/img_arrow_left.svg" alt="left-arrow" className="mx-auto" />
           </button>
           <p className="!text-gray-900 !font-medium text-base leading-5">
             Page
@@ -197,9 +198,9 @@ const totalPages = Math.ceil(totalCards / cardsPerPage);
           <p className="!text-gray-900 !font-medium text-base leading-5">
           of &nbsp; {totalPages}
           </p>
-          <button onClick={handleViewMore} className="w-[15%] h-[40px] px-6 rounded-[5px] bg-red-300 hover:bg-red-400" 
+          <button onClick={handleViewMore} className="w-[15%] h-[40px]  rounded-[5px] bg-red-300 hover:bg-red-400" 
            disabled={currentPage === totalPages}>
-            <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" />
+            <img src="/assets/icons/img_arrow_right.svg" alt="right-arrow" className="mx-auto" />
           </button>
         </div>
         </div>

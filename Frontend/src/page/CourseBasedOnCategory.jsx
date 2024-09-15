@@ -79,8 +79,6 @@ function CourseBasedOnCategory() {
     const { data } = await axios.post("/api/v1/admin/getcourse-basedon-category", { categoryName });
     return data.data.courses; // Return the data from the API response
   };
-
-
 // UseQuery hook to fetch data
 // const { data: coursesByCategory, isLoading, error } = useQuery({
 //     queryKey: ['courses'],
@@ -104,13 +102,13 @@ function CourseBasedOnCategory() {
   console.log("data ",coursesByCategory);
 
   return (
-        <div className="mx-12">
+        <div className="sm:mx-12 mx-8">
     {coursesByCategory?.length>0 && coursesByCategory.map((categoryGroup) => (
         <div key={categoryGroup.courseCategory}>
           <h2 className="text-xl font-bold mb-4">{categoryGroup.courseCategory}</h2>
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-4 mb-8">
             {categoryGroup.courses.slice(0, rowsToShow * 3).map((courseByCategory) => (
-              <div className="flex flex-col p-4" key={courseByCategory._id}>
+              <div className="flex flex-col md:p-1 lg:p-4 p-0" key={courseByCategory._id}>
                 <FreelanceEduCourses
                   standard={courseByCategory.courseName}
                   standardisa={courseByCategory.courseDescription}

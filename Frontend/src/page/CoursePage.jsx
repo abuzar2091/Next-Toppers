@@ -30,7 +30,7 @@ const  CourseProject2 = () => {
   }, [inView]);
 
   return (
-    <div className="grid grid-cols-3 gap-3 mx-16"  ref={ref}>
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-3 sm:mx-16 mx-6"  ref={ref}>
     <div
       ref={leftCardRef}
       className="bg-slate-200 hover:bg-slate-300 rounded-lg flex flex-col justify-center items-center py-10 px-5 "
