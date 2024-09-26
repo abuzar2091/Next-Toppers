@@ -48,7 +48,7 @@ function SignInForm() {
         return;
       }
       await axios
-        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/login`, values)
+        .post(`/api/v1/users/login`, values)
         .then((res) => {
           console.log(res);
         })

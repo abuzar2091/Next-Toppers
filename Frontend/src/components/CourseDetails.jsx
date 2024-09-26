@@ -20,7 +20,7 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
   const [loggedIn,setLoggedIn]=useState(false);
   useEffect(()=>{
     const checkIsLoggedIn=async()=>{
-      await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/get-current-user`).then((res)=>{
+      await axios.get(`/api/v1/users/get-current-user`).then((res)=>{
         setUserData(res.data.data)
         console.log("get current user ",res.data.data);
         setLoggedIn(true);
@@ -298,7 +298,7 @@ function CourseDetails({Course_Title= "Graphic Design Fundamentals",Course_Name=
               <div className="flex flex-row justify-between items-center w-full mt-[5px]">
                 <h1 className="!text-gray-600  text-xl font-semibold">Price</h1>
                 <h1 className="text-deep_orange-400 text-right !font-bold text-[22px] ">
-                  BDT 2999.00
+                  RS 2999.00
                 </h1>
               </div>
               <div className="flex flex-row gap-10 justify-between w-full">

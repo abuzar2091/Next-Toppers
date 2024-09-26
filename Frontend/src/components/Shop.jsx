@@ -30,7 +30,7 @@ function Shop() {
   const [dropDownFilter, setDropDownFilter] = useState([]);
   const fetchBooks = async (allBooks) => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/getbooks-basedon-category?categoryName=${allBooks}`
+      `/api/v1/admin/getbooks-basedon-category?categoryName=${allBooks}`
     );
     return data.data.shops; // Return the data from the API response
   };

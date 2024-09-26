@@ -28,7 +28,7 @@ function BookBasedOnCategory() {
 
     console.log("category ",categoryName);
     const fetchBooks = async (categoryName) => {
-      const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/getbooks-basedon-category?categoryName=${categoryName}`);
+      const { data } = await axios.get(`/api/v1/admin/getbooks-basedon-category?categoryName=${categoryName}`);
       return data.data.shops; // Return the data from the API response
     };
     const { data: booksByCategory, isLoading, error } = useQuery({

@@ -35,7 +35,7 @@ function Header() {
      setUser(INITIAL_USER);
     // setAuthStatus(false);
     // navigate("/");
-    await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/logout`
+    await axios.post(`/api/v1/users/logout`
   ).then((res)=>{
     console.log(res);
   }).catch((err)=>{
@@ -62,8 +62,8 @@ function Header() {
         <div className="flex w-[100%] justify-between">
         <Link to="/" >
         <img
-          src="/assets/images/freelanceitlogo.png"
-          className="h-10 sm:ml-0 md:ml-4 ml-4"
+          src="/assets/images/logoNT.png"
+          className="h-12 w-24 sm:ml-0 md:ml-4 ml-4"
         />
         </Link>
         <div className="md:hidden flex items-center mr-4">

@@ -46,7 +46,7 @@ function EnrollNowForm() {
     });
    
    try {
-     await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/enroll-course`,courseId)
+     await axios.post(`/api/v1/users/enroll-course`,courseId)
      .then((res)=>{
          console.log("enrolled successfully ",res);
          navigate("/my-profile")
@@ -87,7 +87,7 @@ function EnrollNowForm() {
                     <p className="!font-semibold">Amount</p>
                     <div className="sm:w-[300px] w-[250px]">
                       <p className="border rounded p-2 !font-semibold">
-                        <span className=" text-[16px] ">&#2547;</span> 2,999.00
+                        <span className=" text-[16px] "> &#8377;</span> 2,999.00
                       </p>
                       <p className="text-sm flex flex-wrap">
                         18% GST included which is paid to the Government.
@@ -198,8 +198,8 @@ function EnrollNowForm() {
                         />
                       )}
                       <p>
-                        <span className="text-[25px] !font-semibold ">
-                          &#2547;
+                        <span className="text-[18px] !font-semibold ">
+                         &#8377; 
                         </span>{" "}
                         2,999.00
                       </p>

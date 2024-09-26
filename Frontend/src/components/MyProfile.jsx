@@ -7,7 +7,7 @@ function MyProfile() {
       const [data,setData]=useState(null);
     useEffect(()=>{
         const getMyProfile=async()=>{
-            await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/my-profile`)
+            await axios.get(`/api/v1/users/my-profile`)
             .then((res)=>{
                 setData(res.data.data.user[0])
                 console.log("myprofile ",res.data.data.user[0]);
@@ -31,7 +31,7 @@ function MyProfile() {
                 <Link to={`/learning/courseid=${course._id}`}>
                 <div key={course._id} className="flex flex-col justify-between gap-4 w-[380px]  bg-white border-1 rounded-sm ">
                     <img src="/assets/images/batchgraphic.png" className="w-96"/>
-                    <h2 className="font-semibold text-[24px] pl-4">UNAYYAN BATCH ( {course.courseName}  )</h2>
+                    <h2 className="font-semibold text-[24px] pl-4">SIGMA BATCH ( {course.courseName}  )</h2>
                     <p className="text-base text-gray-500 font-sens pl-4">{course.courseDescription}.</p>
                     <p  className="text-base text-gray-500 font-sens pl-4">All lectures will be uploaded at 6PM on alternate days.</p>
                     <button className="bg-blue-400 mb-0 text-white  font-semibold rounded-sm px-4 py-2">Continue</button>

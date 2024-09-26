@@ -81,8 +81,8 @@ function HomePage() {
             </span>
           </h1>
           <h2 className="sub-route !font-medium">
-            One of the most Trusted Institute for Online Education as well as
-            Freelancing
+            Register now and Start learning with Next Toppers Expert faculty at home.
+            
           </h2>
           <Link to={"/courses"}>
             <button className="mt-2 bg-orange-300 text-white py-2 px-2 font-medium min-w-[120px] rounded-[10px]">
@@ -92,8 +92,9 @@ function HomePage() {
         </div>
         <div className="md:w-[50%] w-[100%]">
           <img
-            src="/assets/images/freelance.jpg"
+            src="/assets/images/NTimg.png"
             className="rounded-lg object-cover w-[250px] mx-auto"
+            loading="lazy"
           />
         </div>
       </div>

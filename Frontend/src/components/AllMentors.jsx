@@ -9,7 +9,7 @@ function AllMentors() {
   const mentor="all mentor"
   const [index,setIndex]=useState(0);
   const fetchMentors = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/faculty/get-faculty-mentors`);
+    const { data } = await axios.get(`/api/v1/faculty/get-faculty-mentors`);
     return data.data.mentors; // Return the data from the API response
   };
 const { data: facultyMentor, isLoading, error } = useQuery({
