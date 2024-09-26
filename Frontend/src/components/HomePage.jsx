@@ -71,7 +71,7 @@ function HomePage() {
     setMonthlyEnrollment(100);
   }, [inView, happyLearner,monthlyEnrollment]);
   return (
-    <div className="flex flex-col sm:justify-start w-full gap-[50px] bg-gray-100 ">
+    <div id="home" className="flex flex-col sm:justify-start w-full gap-[50px] bg-gray-100 ">
       <div className="flex md:flex-row flex-col items-center  mx-12 my-8 gap-[0px]   bg-red-50 max-w-7xl rounded-[20px] md:px-12 pb-10">
         <div className="flex flex-col w-[80%] py-8 items-start justify-start mx-0 my-8 gap-[0px] p-0 bg-red-50 max-w-7xl rounded-[20px]">
           <h1 className="!font-semibold w-[100%]  lg:text-[45px] sm:text-[35px] text-[20px]">
@@ -99,7 +99,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div ref={ref} className="!font-semibold sm:text-[25px] text-[15px] text-center">
+      <div id="toptop" ref={ref} className="!font-semibold sm:text-[25px] text-[15px] text-center">
         <h2 >INDIA'S MOST LOVED ONLINE LEARNING PLATFROM ❤️</h2>
         <div className="flex justify-center sm:gap-[200px] mt-8">
 

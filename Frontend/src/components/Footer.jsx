@@ -4,6 +4,7 @@ import { SelectBox } from "@/shared/SelectBox";
 import FooterSmall from "./FooterSmall";
 import axios from "axios";
 import { formValidationSchema } from "@/lib/validation";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const [studentEmail, setStudentEmail] = useState("");
@@ -158,20 +159,20 @@ function Footer() {
           <div className="flex flex-col items-start justify-start  pb-[54px] gap-[19px]">
             <h5 className="font-semibold !text-[22px]">Courses</h5>
             <div className="flex flex-col items-start justify-start w-full gap-6 py-[5px]">
-              <p className="!text-base !font-normal  leading-5 ">
-                Classroom courses
+              <p className="!text-base !font-normal  leading-5 hover:text-blue-500">
+              <Link to="/"> Classroom courses</Link>
               </p>
-              <p className="!text-base !font-normal !leading-[30px] text-gray-600">
-                Virtual classroom courses
+              <p className="!text-base !font-normal !leading-[30px] text-gray-600 hover:text-blue-500">
+              <Link to="/"> Virtual classroom courses</Link>
               </p>
-              <p className="!text-base !font-normal text-gray-600  ">
-                E-learning courses
+              <p className="!text-base !font-normal text-gray-600 hover:text-blue-500 ">
+              <Link to="/"> E-learning courses</Link>
               </p>
-              <p className="!text-base !font-normal text-gray-600 ">
-                Video Courses
+              <p className="!text-base !font-normal text-gray-600 hover:text-blue-500">
+              <Link to="/"> Video Courses</Link>
               </p>
-              <p className="!text-base !font-normal text-gray-600  ">
-                Offline Courses
+              <p className="!text-base !font-normal text-gray-600 hover:text-blue-500 ">
+              <Link to="/">Offline Courses</Link>
               </p>
             </div>
           </div>
@@ -179,40 +180,45 @@ function Footer() {
           <div className="flex flex-col items-start justify-start  pb-[30px] gap-[17px]">
             <h1 className="font-semibold !text-[22px]">Community</h1>
             <div className="flex flex-col items-start justify-center w-full gap-[27px] py-[3px]">
-              <p className="mt-0.5 !text-base !font-normal">Learners</p>
-              <p className="!text-base !font-normal">Partners</p>
-              <p className="!text-base !font-normal">Developers</p>
-              <p className="!text-base !font-normal">Transactions</p>
-              <p className="!text-base !font-normal">Blog</p>
-              <p className="!text-base !font-normal">Teaching Center</p>
+              <p className="mt-0.5 !text-base !font-normal hover:text-blue-500"><Link to="/">Learners</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Partners</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Developers</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Transactions</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Blog</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Teaching Center</Link></p>
             </div>
           </div>
 
           <div className="flex flex-col items-start justify-start  pb-[28px] gap-[19px]">
             <h1 className="font-semibold !text-[22px]">Quick links</h1>
             <div className="flex flex-col items-start justify-center w-full gap-[27px] py-[3px]">
-              <p className="mt-0.5 !text-base !font-normal">Home</p>
-              <p className="!text-base !font-normal">Professional Education</p>
-              <p className="!text-base !font-normal">Courses</p>
-              <p className="!text-base !font-normal">Admissions</p>
-              <p className="!text-base !font-normal">Testimonial</p>
-              <p className="!text-base !font-normal">Programs</p>
+              <p className="mt-0.5 !text-base !font-normal hover:text-blue-500">
+                <a href="#home">
+                Home
+                </a></p>
+              <p className="!text-base !font-normal hover:text-blue-500">
+              <Link to="/">Professional Education</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500">
+              <Link to="/courses">Courses</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"> <a href="#toptop">Admissions</a></p>
+              <p className="!text-base !font-normal hover:text-blue-500"> <a href="#testimonial-section">Testimonial</a></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Programs</Link></p>
             </div>
           </div>
 
           <div className="flex flex-col items-start justify-start   pb-[33px] gap-[19px]">
-            <h1 className="font-semibold !text-[22px]">More</h1>
+            <h1 className="font-semibold !text-[22px] ">More</h1>
             <div className="flex flex-col items-start justify-start w-full gap-[26px] py-1">
-              <p className="!text-base !font-normal">Press</p>
-              <p className="!text-base !font-normal">Investors</p>
-              <p s className="!text-base !font-normal">
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Press</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Investors</Link></p>
+              <p s className="!text-base !font-normal hover:text-blue-500">
                 Terms
               </p>
               <a href="#">
-                <p className="!text-base !font-normal">Privacy</p>
+                <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Privacy</Link></p>
               </a>
-              <p className="!text-base !font-normal">Help</p>
-              <p className="!text-base !font-normal">Contact</p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Help</Link></p>
+              <p className="!text-base !font-normal hover:text-blue-500"><Link to="/">Contact</Link></p>
             </div>
           </div>
         </div>

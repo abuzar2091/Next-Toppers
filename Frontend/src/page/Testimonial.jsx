@@ -109,7 +109,7 @@ const Testimonials = () => {
   return (
    
     // <div className="flex gap-4 m-12">
-    <div className="flex flex-col bg-gray-200 py-2">
+    <div id="testimonial-section" className="flex flex-col bg-gray-200 py-2">
 
     <h1 className="!font-semibold w-[100%] lg:text-[45px] md:text-[35px] text-[25px] text-center">Testimonials</h1>
     <p className="!font-semibold md:text-[25px] text-[18px] text-center px-2"> Across the nation, we're the institute of choice for thousands of students and parents</p>
