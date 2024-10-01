@@ -100,7 +100,7 @@ function ApplicationFormForMentor() {
       setSubmitForm(true);
       console.log("inside submit", values);
       await axios
-        .post(`/api/v1/admin/request_as_mentor`, values)
+        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/request_as_mentor`, values)
         .then((res) => {
           console.log("hello world response ", res);
           setSubmitForm(false);

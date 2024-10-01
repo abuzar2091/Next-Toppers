@@ -7,7 +7,7 @@ function NewBatch() {
     const [launchCourse,setLaunchCourse]=useState(null);
     useEffect(()=>{
         const getRecentlyLaunchedCourse=async()=>{
-            await axios.get(`/api/v1/admin/recent-course`)
+            await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/recent-course`)
             .then((res)=>{
                 setLaunchCourse(res.data.data)
                 console.log("recently launced cousre ",res.data.data);

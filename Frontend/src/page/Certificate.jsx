@@ -11,7 +11,7 @@ function GetCertificate({courseId={courseId}}) {
     
     useEffect(()=>{
       const checkIsLoggedIn=async()=>{
-        await axios.get(`/api/v1/users/get-current-user`).then((res)=>{
+        await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/get-current-user`).then((res)=>{
           setUserData(res.data.data)
           console.log("get current user ",res.data.data);
           setLoggedIn(true);

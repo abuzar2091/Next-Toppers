@@ -17,7 +17,7 @@ function CourseLayout() {
     const [dropDownFilter,setDropDownFilter]=useState([]);
     const cardsPerPage = 6;
     const fetchCourses = async (categoryName) => {
-        const { data } = await axios.post(`/api/v1/admin/getcourse-basedon-category`, { categoryName });
+        const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/admin/getcourse-basedon-category`, { categoryName });
         return data.data.courses; // Return the data from the API response
       };
     const dropDownOptions = [
@@ -62,7 +62,7 @@ function CourseLayout() {
       };
   
     
-      if (isLoading) return <p className="mx-12">Loading...</p>;
+      if (isLoading) return <p className="text-center min-h-screen bg-gray-100">Loading...</p>;
   if (error) return <p className="mx-12">Errors loading courses: {error.message}</p>;
  
   console.log("dropdown",dropDownFilter);

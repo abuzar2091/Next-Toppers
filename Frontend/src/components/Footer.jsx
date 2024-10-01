@@ -17,7 +17,7 @@ function Footer() {
       setSubmitForm(true);
       console.log(studentEmail);
       formValidationSchema.parse({studentEmail});
-      await axios.post(`/api/v1/users/email`
+      await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/email`
         ,{studentEmail})
       .then((res)=>{
         console.log("form successfully submitted ",res.data.data);

@@ -22,7 +22,7 @@ function Courses() {
         setShowCourse(true);
   }
   return (
-    <div className="flex flex-col  justify-start w-full gap-[50px] bg-gray-100">
+    <div className="flex flex-col  justify-start w-full gap-[50px]  bg-gray-100">
       <div className="flex flex-col items-start justify-start  mx-12 my-8 gap-[5px] md:p-5 p-4 bg-yellow-100 max-w-7xl rounded-[20px]">
         <h2 className="sub-route !font-medium">Home | Courses</h2>
 

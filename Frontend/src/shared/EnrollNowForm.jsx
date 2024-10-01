@@ -46,7 +46,7 @@ function EnrollNowForm() {
     });
    
    try {
-     await axios.post(`/api/v1/users/enroll-course`,courseId)
+     await axios.post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/enroll-course`,courseId)
      .then((res)=>{
          console.log("enrolled successfully ",res);
          navigate("/my-profile")
