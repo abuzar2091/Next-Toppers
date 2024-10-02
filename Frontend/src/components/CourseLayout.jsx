@@ -62,7 +62,7 @@ function CourseLayout() {
       };
   
     
-  //if (isLoading) return <p className="text-center min-h-screen bg-gray-100">Loading...</p>;
+  if (isLoading) return <p className="text-center min-h-screen bg-gray-100">Loading...</p>;
   if (error) return <p className="mx-12">Errors loading courses: {error.message}</p>;
  
   console.log("dropdown",dropDownFilter);
