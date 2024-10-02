@@ -19,6 +19,7 @@ import { Popover, PopoverContent } from "@/components/ui/popover";
 import { useUserContext } from "@/context/AuthContext";
 import Loader from "@/components/Loader";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 function SignUpForm() {
   const isLoading = false;
@@ -53,7 +54,9 @@ function SignUpForm() {
         return;
       }
       await axios
-        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/signup`, values)
+        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/signup`, values,{
+          withCredentials:true
+        })
         .then((res) => {
           console.log(res);
         })

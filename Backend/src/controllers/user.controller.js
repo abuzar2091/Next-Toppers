@@ -106,8 +106,10 @@ const loginUser = wrapAsyncHandler(async (req, res) => {
   
     const options = {
       httpOnly: true,
-      secure: true,
+      secure:true, // Secure only in production
+      sameSite: 'None', // Required for cross-origin requests
     };
+    
     return res
       .status(200)
       .cookie("accessToken", accessToken, options)

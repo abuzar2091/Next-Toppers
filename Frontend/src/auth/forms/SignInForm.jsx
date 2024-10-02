@@ -18,6 +18,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useUserContext } from "@/context/AuthContext";
 import Loader from "@/components/Loader";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 function SignInForm() {
   // const isLoading = false;
   const [check, setCheck] = useState(false);
@@ -48,7 +49,9 @@ function SignInForm() {
         return;
       }
       await axios
-        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/login`, values)
+        .post(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/login`, values,{
+          withCredentials:true
+        })
         .then((res) => {
           console.log(res);
         })

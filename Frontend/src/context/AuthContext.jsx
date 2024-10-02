@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export const INITIAL_USER = {
   _id: "",
@@ -26,7 +27,9 @@ const AuthProvider = ({ children }) => {
   const checkAuthUser = async () => {
     setIsLoading(true);
     try {
-      const currentAccount= await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/get-current-user`);  
+      const currentAccount= await axios.get(`${import.meta.env.VITE_BACKEND_API_URI}/api/v1/users/get-current-user`,{
+        withCredentials:true
+      });  
     //   .then((res)=>{
     //   console.log(res);
     // })
