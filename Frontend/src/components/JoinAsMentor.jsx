@@ -26,7 +26,7 @@ function JoinAsMentor() {
             src="/assets/images/mentor_img.jpg"
             alt="mentor-img"
             className="object cover rounded-[20px] sm:w-1/3 w-[60%] mx-auto"
-            loading="lazy"
+           
           />
           {/* </div> */}
         </div>
@@ -38,7 +38,6 @@ function JoinAsMentor() {
             src="/assets/images/img_image_521x510.png"
             alt="image_applyer"
             className="w-[40%] h-auto   object-cover"
-            loading="lazy"
           />
 
           <div className="flex md:flex-col sm:flex-row flex-col items-start justify-start  w-[97%]  gap-[30px]">
@@ -120,7 +119,7 @@ function JoinAsMentor() {
                       src="/assets/images/img_bg.png"
                       alt="bg_three"
                       className="w-full object-cover rounded-[20px]"
-                      loading="lazy"
+                     
                     />
                   </div>
                 </div>
